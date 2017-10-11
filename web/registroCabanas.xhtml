@@ -20,8 +20,13 @@
                             <h:messages />
                         </h:panelGroup>
                         <h:panelGrid columns="4" styleClass="table" >
-                            
-                        </h:panelGrid>
+                            <h:outputLabel for="idcliente" value="IdCliente: " />
+                            <h:inputText id="idCabana" styleClass="form-control" value="#{clientesBean.clientes.idClientes}" required="true" requiredMessage="Debe ingresar el idCliente" validatorMessage="Id no valido">
+                                <f:validateRegex pattern="[A-Z]{3}[0-9][6]"
+                            </h:inputText>
+                            <h:inputText id="codCabana" styleClass="form-control" value="#{cabana}">
+                                
+                            </h:inputText>
                     </h:form>
                 </div>
             </div>
