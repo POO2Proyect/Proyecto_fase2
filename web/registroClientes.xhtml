@@ -26,11 +26,11 @@
                             <f:validateRegex pattern="[A-Z]{2}[0-9]{6}"/>    
                             </h:inputText>
                             <h:outputLabel for="dui" value="Dui:"/>
-                            <h:inputText id="dui" styleClass="form-control" value="#{clientesBean.clientes.dui}" required="true" requiredMessage="Debes ingresar el DUI">
+                            <h:inputText id="dui" styleClass="form-control" value="#{clientesBean.clientes.dui}" required="true" requiredMessage="Formato de Dui Incorrecto">
                             <f:validateRegex pattern="[0-9]{8}"/>
                             </h:inputText>
                             <h:outputLabel for="nombre" value="nombre:"/>
-                            <h:inputText id="nombre" styleClass="form-control" value="#{clientesBean.clientes.nombre}" required="true" requiredMessage="Debes ingresar Nombre"/>
+                            <h:inputText id="nombre" styleClass="form-control" value="#{clientesBean.clientes.nombre}" required="true" requiredMessage="Formato de nombre incorrecto"/>
                             <h:outputLabel for="apellido" value="Apellido:"/>
                             <h:inputText id="apellido" value="#{clientesBean.clientes.apellido}" required="true" styleClass="form-control" requiredMessage="Debes ingresar Apellido">
                             </h:inputText>
