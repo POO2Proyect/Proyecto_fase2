@@ -1,3 +1,4 @@
+
 package modelo;
 
 import entidades.CabanasEntity;
@@ -8,9 +9,10 @@ import javax.persistence.Query;
 import utils.JpaUtil;
 
 /**
+ *
  * @author Usuario
  */
-public class ToursModel {
+public class TipoDestinoModel {
      public List<CabanasEntity> listarCabanas(){
         //creamos una instancia de EntityManager
         EntityManager em = JpaUtil.getEntityManager();

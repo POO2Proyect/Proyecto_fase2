@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controlador;
 
 import entidades.ClientesEntity;
@@ -8,19 +13,21 @@ import modelo.ClientesModel;
 import utils.JsfUtil;
 
 /**
+ *
  * @author Usuario
  */
 @ManagedBean
 @RequestScoped
-public class ToursBean {
-ClientesModel modelo = new ClientesModel();
+public class TipoDestinoBeans {
+
+   ClientesModel modelo = new ClientesModel();
     private ClientesEntity cliente;
         private List<ClientesEntity> listaClientes;
 
     /**
      * Creates a new instance of ClientesBean
      */
-    public ToursBean() {
+    public TipoDestinoBeans() {
         cliente = new ClientesEntity();
     }
     
@@ -71,4 +78,5 @@ ClientesModel modelo = new ClientesModel();
         String idCliente = JsfUtil.getRequest().getParameter("idCliente");
         cliente = modelo.obtenerCliente(idCliente);
     }
+    
 }
