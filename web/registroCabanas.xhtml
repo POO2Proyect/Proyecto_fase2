@@ -34,7 +34,7 @@
                             </h:inputText>
                             <h:outputLabel for="numLocal" value="Numero de Cabaña" />
                             <h:inputText id="numLocal" styleClass="form-control" value="#{cabanasBean.cabanas.numLocal}" required="true" requiredMessage="Nombre Requerido" validatorMessage="Nombre Invalido">
-                                <f:validateRegex pattern="{0-9}"
+                                <f:validateRegex pattern="{0-9}" />
                             </h:inputText>
                             <h:outputLabel for="capacidad" value="Capacidad" />
                             <h:inputText id="capacidad" styleClass="form-control" value="#{cabanasBean.cabanas.capacidad}" required="true" requiredMessage="Numero de Capacidad Invalido" validatorMessage="Valor invalido">
