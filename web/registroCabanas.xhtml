@@ -45,19 +45,19 @@
                                 <f:validateRegex pattern="^(\d{1}\.)?(\d+\.?)+(,\d{2})?$" />
                             </h:inputText>
                             <h:outputLabel for="precioNoche" value="Precio de Noche" />
-                            <h:inputText id="precioD" styleClass="form-control" value="#{cabanasBean.cabanas.precioDia}" required="true" requiredMessage="Precion Invalido" validatorMessage="Parametro Requerido">
+                            <h:inputText id="precioN" styleClass="form-control" value="#{cabanasBean.cabanas.precioDia}" required="true" requiredMessage="Precion Invalido" validatorMessage="Parametro Requerido">
                                 <f:validateRegex pattern="^(\d{1}\.)?(\d+\.?)+(,\d{2})?$" />
                             </h:inputText>
                             <h:outputLabel for="precioTodo" value="Precio 24 Horas" />
-                            <h:inputText id="precioD" styleClass="form-control" value="#{cabanasBean.cabanas.precioDia}" required="true" requiredMessage="Precion Invalido" validatorMessage="Parametro Requerido">
+                            <h:inputText id="precioT" styleClass="form-control" value="#{cabanasBean.cabanas.precioDia}" required="true" requiredMessage="Precion Invalido" validatorMessage="Parametro Requerido">
                                 <f:validateRegex pattern="^(\d{1}\.)?(\d+\.?)+(,\d{2})?$" />
                             </h:inputText>
                             <h:outputLabel for="descripcion" value="Descripcion" />
-                            <h:inputText id="precioD" styleClass="form-control" value="#{cabanasBean.cabanas.precioDia}" required="true" requiredMessage="Precion Invalido" validatorMessage="Parametro Requerido">
-                               
+                            <h:inputText id="descripcion" styleClass="form-control" value="#{cabanasBean.cabanas.precioDia}" required="true" requiredMessage="Precion Invalido" validatorMessage="Parametro Requerido">
                             </h:inputText>
-                                
-                            </h:outputText>
+                            </h:panelGrid>
+                        <h:commandButton id="guardar" value="Guardar" styleClass="btn btn-success" style="margin-right: 10px" action="#{cabanasBean.guardarCabana()}" />
+                        <h:commandButton id="limpiar" value="Limpiar" styleClass="btn btn-info" style="margin-right: 10px" />
                     </h:form>
                 </div>
             </div>
