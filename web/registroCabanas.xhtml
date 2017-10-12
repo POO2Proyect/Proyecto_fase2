@@ -62,5 +62,35 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <h:form>
+                <h:dataTable styleClass="table" value="#{cabanasBean.listaCabanas}" var="cbn" rendered="#{cabanasBean.listaCabanas.size()>0}">
+                    <h:column>
+                        <f:facet name="header">
+                                 <h:outputLabel value="idCabanas" />
+                        </f:facet>
+                        <h:outputText value="#{cbn.idCabanas}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Codigo Cabaña" />
+                        </f:facet>
+                        <h:outputText value="#{cbn.codCabana}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="hearder">
+                            <h:outputLabel value="Nombre" />
+                        </f:facet>
+                        <h:outputText value="#{cbn.nombre}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Numero Local" />
+                        </f:facet>
+                    </h:column>
+                    
+                </h:dataTable>
+            </h:form>
+        </div>
     </h:body>
 </html>
