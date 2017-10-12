@@ -87,6 +87,48 @@
                         <f:facet name="header">
                             <h:outputLabel value="Numero Local" />
                         </f:facet>
+                        <h:outputText value="#{cbn.numLocal}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Capacidad" />
+                        </f:facet>
+                        <h:outputText value="#{cbn.capacidad}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Precio Diurno" />
+                        </f:facet>
+                        <h:outputText value="#{cbn.precioDia}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Precio Nocturno" />
+                        </f:facet>
+                        <h:outputText value="#{cbn.precioNoche}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Precio 24 Horal" />
+                        </f:facet>
+                        <h:outputText value="#{cbn.precioDN}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Descripcion" />
+                        </f:facet>
+                        <h:outputText value="#{cbn.descripcion}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Operaciones" />
+                        </f:facet>
+                        <h:commandButton value="Eliminar" styleClass="btn btn-danger" action="#{cabanasBean.eliminarCliente()}" onclick="return confirmarEliminacion();">
+                            <f:param name="idCliente" value="#{cbn.idCabanas}"/>
+                        </h:commandButton>&nbsp;
+                        <h:commandButton value="Modificar" styleClass="btn btn-warning" action="#{cabanasBean.obtenerCabana()}">
+                            <f:param name="idCliente" value="#{cbn.idCabanas}"/>
+                        </h:commandButton>
                     </h:column>
                     
                 </h:dataTable>
