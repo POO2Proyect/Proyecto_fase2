@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Registro de Clientes</title>
+        <h:outputStylesheet name="css/bootstrap.min.css" />
+        <h:outputStylesheet name="css/alertify.core.css" />
+        <h:outputStylesheet name="css/alertify.default.css" />
+        <h:outputScript name="js/alertify.js"/>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Registro de Transportes</h2>
+                    <h:form id="miFormulario">
+                        <h:panelGroup layout="block" styleClass="alert alert-danger" rendered="#{not empty facesContext.messageList}">
+                            <h:messages  />
+                        </h:panelGroup>
+                        <h:panelGrid columns="4" styleClass="table">
+                            <h:outputLabel for="idTransporte" value="idTransporte"/>
+                            <h:inputText id="idTransporte" styleClass="form-control" value="#{tranportesBean.transportes.idTransporte}" required="true" requiredMessage="Debes ingresar el idTransporte" validatorMessage="Id no valido">
+                                <f:validateRegex pattern="[A-Z]{2}[0-9]{6}"/>
+                            </h:inputText>
+                            <h:outputLabel for="placa" value="placa:"/>
+                            <h:inputText id="placa" styleClass="form-control" value="#{tranportesBean.transportes.placa}" required="true" requiredMessage="Debes ingresar la placa">
+                            
+                            </h:inputText>
+                            <h:outputLabel for="marca" value="marca:"/>
+                            <h:inputText id="marca" styleClass="form-control" value="#{tranportesBean.transportes.marca}" required="true" requiredMessage="Debes ingresar la marca"/>
+                              
+                            
+                            <h:outputLabel for="modelo" value="modelo:"/>
+                            <h:inputText id="modelo" value="#{tranportesBean.transportes.modelo}" required="true" styleClass="form-control" requiredMessage="Debes ingresar el modelo">
+                            </h:inputText>
+                            
+                            <h:outputLabel for="color" value="color"/>
+                            <h:inputText id="color" value="#{tranportesBean.transportes.color}" required="true"  styleClass="form-control" requiredMessage="Debes ingresar edad">
+      
+                            </h:inputText>
+                             <h:outputLabel for="tipo" value="tipp:"/>
+                            <h:inputText id="tipo" value="#{tranportesBean.transportes.tipo}" required="true"  styleClass="form-control" requiredMessage="Debes ingresar el tipo">
+                            </h:inputText>
+                               <h:outputLabel for="capacidad" value="capacidad:"/>
+                            <h:inputText id="capacidad" value="#{tranportesBean.transportes.capacidad}" required="true"  styleClass="form-control" requiredMessage="Debes ingresar la capacidad">
+                           
+                            </h:inputText>
+                            <h:outputLabel for="precio" value="precio:"/>
+                            <h:inputText id="precio" value="#{tranportesBean.transportes.precio}" required="true"  styleClass="form-control" requiredMessage="Debes ingresar el precio">
+                           
+                            </h:inputText>
+                           
+                            
+                           
+                            
+                        </h:panelGrid>
+                        <h:commandButton  value="Guardar" styleClass="btn btn-success" action="#{tranportesBean.guardarTransportes()}" style="margin-right:10px"/>
+                        <h:commandButton type="reset" value="Limpiar" styleClass="btn btn-danger"/>
+                    </h:form>
+                </div>
+            </div>
+            <div class="row">
+                <h:form >
+                    <h:dataTable styleClass="table" value="#{tranportesBean.listaTransportes}" 
+                                 var="est" rendered="#{tranportesBean.listaTransportes.size()>0}">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="idTransporte"/>
+                            </f:facet>
+                            <h:outputText value="#{est.idTransporte}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="placa"/>
+                            </f:facet>
+                            <h:outputText value="#{est.placa}"/>      
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="marca"/>
+                            </f:facet>
+                            <h:outputText value="#{est.marca}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="modelo"/>
+                            </f:facet>
+                            <h:outputText value="#{est.modelo}"/>
+                        </h:column>
+                          <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="color"/>
+                            </f:facet>
+                                  <h:outputText value="#{est.color}"/>
+                        </h:column>
+                           <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="tipo"/>
+                            </f:facet>
+                                  <h:outputText value="#{est.tipo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="capacidad"/>
+                            </f:facet>
+                            <h:outputText value="#{est.capacidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="precio"/>
+                            </f:facet>
+                            <h:outputText value="#{est.precio}"/>
+                        </h:column>
+                              
+                           
+                            
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Operaciones"/>
+                            </f:facet>
+                            <h:commandButton value="Eliminar" styleClass="btn btn-danger" action="#{tranportesBean.eliminarTransportes()}" onclick="return confirmarEliminacion();">
+                                <f:param name="idTransporte" value="#{est.idTransporte}"/>
+                            </h:commandButton>&nbsp;
+                            <h:commandButton value="Modificar" styleClass="btn btn-warning" action="#{tranportesBean.obtenerTransportes()}">
+                                <f:param name="idTransporte" value="#{est.idTransporte}"/>
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+        <h:outputScript>
+            function confirmarEliminacion(){
+                return confirm("¿Está seguro que desea eliminar este Empleado?");
+            }
+            
+            <c:if test = "#{not empty flash.exito}" >
+                alertify.success('#{flash.exito}');
+            </c:if>
+        </h:outputScript>
+    </h:body>
+</html>

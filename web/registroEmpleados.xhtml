@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Registro de Clientes</title>
+        <h:outputStylesheet name="css/bootstrap.min.css" />
+        <h:outputStylesheet name="css/alertify.core.css" />
+        <h:outputStylesheet name="css/alertify.default.css" />
+        <h:outputScript name="js/alertify.js"/>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Registro de Empleados</h2>
+                    <h:form id="miFormulario">
+                        <h:panelGroup layout="block" styleClass="alert alert-danger" rendered="#{not empty facesContext.messageList}">
+                            <h:messages  />
+                        </h:panelGroup>
+                        <h:panelGrid columns="4" styleClass="table">
+                            <h:outputLabel for="idEmpleado" value="idEmpleado:"/>
+                            <h:inputText id="idEmpleado" styleClass="form-control" value="#{empleadosBean.empleados.idEmpleado}" required="true" requiredMessage="Debes ingresar el idEmpleado" validatorMessage="Id no valido">
+                                <f:validateRegex pattern="[A-Z]{2}[0-9]{6}"/>
+                            </h:inputText>
+                            <h:outputLabel for="codEmpleado" value="codEmpleado:"/>
+                            <h:inputText id="codEmpleado" styleClass="form-control" value="#{empleadosBean.empleados.codEmpleado}" required="true" requiredMessage="Debes ingresar el codempleado">
+                            <f:validateRegex pattern="[0-9]{1}"/>
+                            </h:inputText>
+                            <h:outputLabel for="nombre" value="nombre:"/>
+                            <h:inputText id="nombre" styleClass="form-control" value="#{empleadosBean.empleados.nombre}" required="true" requiredMessage="Debes ingresar Nombre"/>
+                            <h:outputLabel for="apellido" value="Apellido:"/>
+                            <h:inputText id="apellido" value="#{empleadosBean.empleados.apellido}" required="true" styleClass="form-control" requiredMessage="Debes ingresar Apellido">
+                            </h:inputText>
+                            <h:outputLabel for="edad" value="edad"/>
+                            <h:inputText id="edad" value="#{empleadosBean.empleados.edad}" required="true"  styleClass="form-control" requiredMessage="Debes ingresar edad">
+                           <f:validateRegex pattern="[0-9]{2}"/>
+                            </h:inputText>
+                             <h:outputLabel for="correo" value="correo:"/>
+                            <h:inputText id="correo" value="#{empleadosBean.empleados.correo}" required="true"  styleClass="form-control" requiredMessage="Debes ingresar un correo">
+                            </h:inputText>
+                               <h:outputLabel for="telefono" value="telefono:"/>
+                            <h:inputText id="telefono" value="#{empleadosBean.empleados.telefono}" required="true"  styleClass="form-control" requiredMessage="Debes ingresar telefono">
+                           <f:validateRegex pattern="[0-9]{8}"/>
+                            </h:inputText>
+                            <h:outputLabel for="movil" value="movil:"/>
+                            <h:inputText id="movil" value="#{empleadosBean.empleados.movil}" required="true"  styleClass="form-control" requiredMessage="Debes ingresar telefono movil">
+                           <f:validateRegex pattern="[0-9]{8}"/>
+                            </h:inputText>
+                             <h:outputLabel for="idcargo" value="idcargo:"/>
+                            <h:inputText id="idcargo" value="#{empleadosBean.empleados.idcargo}" required="true"  styleClass="form-control" requiredMessage="Debes ingresar un idcargo">
+                            </h:inputText>
+                            
+                           
+                             <h:outputLabel for="direccion" value="direccion:"/>
+                             <h:inputText id="direccion" value="#{empleadosBean.empleados.direccion}" required="true"  styleClass="form-control" requiredMessage="Debes ingresar una direccion">
+                            </h:inputText>
+                        </h:panelGrid>
+                        <h:commandButton  value="Guardar" styleClass="btn btn-success" action="#{empleadosBean.guardarEmpleados()}" style="margin-right:10px"/>
+                        <h:commandButton type="reset" value="Limpiar" styleClass="btn btn-danger"/>
+                    </h:form>
+                </div>
+            </div>
+            <div class="row">
+                <h:form >
+                    <h:dataTable styleClass="table" value="#{empleadosBean.listaEmpleados}" 
+                                 var="est" rendered="#{empleadosBean.listaEmpleados.size()>0}">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="idEmpleado"/>
+                            </f:facet>
+                            <h:outputText value="#{est.idEmpleado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="codEmpleado"/>
+                            </f:facet>
+                            <h:outputText value="#{est.codEmpleado}"/>      
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Nombre"/>
+                            </f:facet>
+                            <h:outputText value="#{est.nombre}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Apellido"/>
+                            </f:facet>
+                            <h:outputText value="#{est.apellido}"/>
+                        </h:column>
+                          <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Edad"/>
+                            </f:facet>
+                                  <h:outputText value="#{est.edad}"/>
+                        </h:column>
+                           <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Correo"/>
+                            </f:facet>
+                                  <h:outputText value="#{est.correo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Telefono"/>
+                            </f:facet>
+                            <h:outputText value="#{est.telefono}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Movil"/>
+                            </f:facet>
+                            <h:outputText value="#{est.movil}"/>
+                        </h:column>
+                               <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="idcargo"/>
+                            </f:facet>
+                                  <h:outputText value="#{est.idcargo}"/>
+                        </h:column>
+                           
+                              <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Direccion"/>
+                            </f:facet>
+                                  <h:outputText value="#{est.direccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Operaciones"/>
+                            </f:facet>
+                            <h:commandButton value="Eliminar" styleClass="btn btn-danger" action="#{empleadosBean.eliminarEmpleados()}" onclick="return confirmarEliminacion();">
+                                <f:param name="idEmpleado" value="#{est.idEmpleado}"/>
+                            </h:commandButton>&nbsp;
+                            <h:commandButton value="Modificar" styleClass="btn btn-warning" action="#{empleadosBean.obtenerEmpleados()}">
+                                <f:param name="idEmpleado" value="#{est.idEmpleado}"/>
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+        <h:outputScript>
+            function confirmarEliminacion(){
+                return confirm("¿Está seguro que desea eliminar este Empleado?");
+            }
+            
+            <c:if test = "#{not empty flash.exito}" >
+                alertify.success('#{flash.exito}');
+            </c:if>
+        </h:outputScript>
+    </h:body>
+</html>
