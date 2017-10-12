@@ -134,5 +134,14 @@
                 </h:dataTable>
             </h:form>
         </div>
+        <h:outputScript>
+            function confirmarEliminacion(){
+                return confirm("¿Está seguro que desea eliminar este Cabaña");
+            }
+            
+            <c:if test = "#{not empty flash.exito}" >
+                alertify.success('#{flash.exito}');
+            </c:if>
+        </h:outputScript>
     </h:body>
 </html>
