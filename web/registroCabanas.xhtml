@@ -22,35 +22,35 @@
                         <h:panelGrid columns="4" styleClass="table" >
                             <h:outputLabel for="idCabanas" value="idCabanas " />
                             <h:inputText id="idCabana" styleClass="form-control" value="#{cabanasBean.cabanas.idCabanas}" required="true" requiredMessage="Debe ingresar el idCliente" validatorMessage="Id no valido">
-                                <f:validateRegex pattern="[A-Z]{3}[0-9][6]" />
+                                
                             </h:inputText>
                             <h:outputLabel for="codCabana" value="Codigo Cabaña" />
                             <h:inputText id="codCabana" styleClass="form-control" value="#{cabanasBean.cabanas.codCabana}" required="true" requiredMessage="Debe Ingresar el Codigo de la Cabaña" validatorMessage="Codigo Invalido">
-                                <f:validateRegex pattern="[A-Z]{4}[0-9]{4}" />
+                                
                             </h:inputText>
                             <h:outputLabel for="nombre" value="Nombre Cabaña" />
                             <h:inputText id="nombreC" styleClass="form-control" value="#{cabanasBean.cabanas.nombre}" required="true" requiredMessage="Nombre Requerido" validatorMessage="Nombre Invalido">
-                                <f:validateRegex pattern="[Aa-Zz]{150}" />
+                                
                             </h:inputText>
                             <h:outputLabel for="numLocal" value="Numero de Cabaña" />
                             <h:inputText id="numLocal" styleClass="form-control" value="#{cabanasBean.cabanas.numLocal}" required="true" requiredMessage="Nombre Requerido" validatorMessage="Nombre Invalido">
-                                <f:validateRegex pattern="{0-9}" />
+                                
                             </h:inputText>
                             <h:outputLabel for="capacidad" value="Capacidad" />
                             <h:inputText id="capacidad" styleClass="form-control" value="#{cabanasBean.cabanas.capacidad}" required="true" requiredMessage="Numero de Capacidad Invalido" validatorMessage="Valor invalido">
-                                <f:validateRegex pattern="{0-9}[2]"/>
+                                
                             </h:inputText>
                             <h:outputLabel for="precioDia" value="Precio de Dia" />
                             <h:inputText id="precioD" styleClass="form-control" value="#{cabanasBean.cabanas.precioDia}" required="true" requiredMessage="Precion Invalido" validatorMessage="Parametro Requerido">
-                                <f:validateRegex pattern="^(\d{1}\.)?(\d+\.?)+(,\d{2})?$" />
+                                
                             </h:inputText>
                             <h:outputLabel for="precioNoche" value="Precio de Noche" />
                             <h:inputText id="precioN" styleClass="form-control" value="#{cabanasBean.cabanas.precioDia}" required="true" requiredMessage="Precion Invalido" validatorMessage="Parametro Requerido">
-                                <f:validateRegex pattern="^(\d{1}\.)?(\d+\.?)+(,\d{2})?$" />
+                                
                             </h:inputText>
                             <h:outputLabel for="precioTodo" value="Precio 24 Horas" />
                             <h:inputText id="precioT" styleClass="form-control" value="#{cabanasBean.cabanas.precioDia}" required="true" requiredMessage="Precion Invalido" validatorMessage="Parametro Requerido">
-                                <f:validateRegex pattern="^(\d{1}\.)?(\d+\.?)+(,\d{2})?$" />
+                                
                             </h:inputText>
                             <h:outputLabel for="descripcion" value="Descripcion" />
                             <h:inputText id="descripcion" styleClass="form-control" value="#{cabanasBean.cabanas.precioDia}" required="true" requiredMessage="Precion Invalido" validatorMessage="Parametro Requerido">
