@@ -35,7 +35,7 @@ public class CabanasBean {
     }
 
     public List<CabanasEntity> getListaCabanas() {
-        return listaCabanas;
+        return cabanasM.listarCabanas();
     }
 
     public String guardarCabana(){
@@ -45,7 +45,7 @@ public class CabanasBean {
         }else {
             JsfUtil.setFlashMessage("exito", "Cliente registrado exitosamente");
             //Forzando la redirección en el cliente
-            return "registroClientes?faces-redirect=true";
+            return "registroCabanas?faces-redirect=true";
         }
     }
 
@@ -55,7 +55,7 @@ public class CabanasBean {
         } else {
             JsfUtil.setErrorMessage(null, "Nose pudo modificar el Cliente");
         }
-        return "registroClientes?faces-redirect=true";
+        return "registroCabanas?faces-redirect=true";
     }
     
      public String eliminarCabana() {
@@ -66,7 +66,7 @@ public class CabanasBean {
         } else {
             JsfUtil.setErrorMessage(null, "No se pudo borrar a este cliente");
         }
-        return "registroClientes?faces-redirect=true";
+        return "registroCabanas?faces-redirect=true";
     }
      
      public void obtenerCabana(){

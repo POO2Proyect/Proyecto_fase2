@@ -6,63 +6,62 @@
 package entidades;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  *
- * @author Nestor2
+ * @author Usuario
  */
 @Entity
 @Table(name = "empleado")
 @NamedQueries({
-    @NamedQuery(name = "EmpleadoEntity.findAll", query = "SELECT e FROM EmpleadoEntity e")
-    , @NamedQuery(name = "EmpleadoEntity.findByIdEmpleado", query = "SELECT e FROM EmpleadoEntity e WHERE e.idEmpleado = :idEmpleado")
-    , @NamedQuery(name = "EmpleadoEntity.findByCodEmpleado", query = "SELECT e FROM EmpleadoEntity e WHERE e.codEmpleado = :codEmpleado")
-    , @NamedQuery(name = "EmpleadoEntity.findByNombre", query = "SELECT e FROM EmpleadoEntity e WHERE e.nombre = :nombre")
-    , @NamedQuery(name = "EmpleadoEntity.findByApellido", query = "SELECT e FROM EmpleadoEntity e WHERE e.apellido = :apellido")
-    , @NamedQuery(name = "EmpleadoEntity.findByFechaNacimiento", query = "SELECT e FROM EmpleadoEntity e WHERE e.fechaNacimiento = :fechaNacimiento")
-    , @NamedQuery(name = "EmpleadoEntity.findByCorreo", query = "SELECT e FROM EmpleadoEntity e WHERE e.correo = :correo")
-    , @NamedQuery(name = "EmpleadoEntity.findByTelefono", query = "SELECT e FROM EmpleadoEntity e WHERE e.telefono = :telefono")
-    , @NamedQuery(name = "EmpleadoEntity.findByMovil", query = "SELECT e FROM EmpleadoEntity e WHERE e.movil = :movil")
-    , @NamedQuery(name = "EmpleadoEntity.findByIdcargo", query = "SELECT e FROM EmpleadoEntity e WHERE e.idcargo = :idcargo")
-    , @NamedQuery(name = "EmpleadoEntity.findByDireccion", query = "SELECT e FROM EmpleadoEntity e WHERE e.direccion = :direccion")})
+    @NamedQuery(name = "EmpleadoEntity.findAll", query = "SELECT e FROM EmpleadoEntity e"),
+    @NamedQuery(name = "EmpleadoEntity.findByIdEmpleado", query = "SELECT e FROM EmpleadoEntity e WHERE e.idEmpleado = :idEmpleado"),
+    @NamedQuery(name = "EmpleadoEntity.findByCodEmpleado", query = "SELECT e FROM EmpleadoEntity e WHERE e.codEmpleado = :codEmpleado"),
+    @NamedQuery(name = "EmpleadoEntity.findByNombre", query = "SELECT e FROM EmpleadoEntity e WHERE e.nombre = :nombre"),
+    @NamedQuery(name = "EmpleadoEntity.findByApellido", query = "SELECT e FROM EmpleadoEntity e WHERE e.apellido = :apellido"),
+    @NamedQuery(name = "EmpleadoEntity.findByEdad", query = "SELECT e FROM EmpleadoEntity e WHERE e.edad = :edad"),
+    @NamedQuery(name = "EmpleadoEntity.findByCorreo", query = "SELECT e FROM EmpleadoEntity e WHERE e.correo = :correo"),
+    @NamedQuery(name = "EmpleadoEntity.findByTelefono", query = "SELECT e FROM EmpleadoEntity e WHERE e.telefono = :telefono"),
+    @NamedQuery(name = "EmpleadoEntity.findByMovil", query = "SELECT e FROM EmpleadoEntity e WHERE e.movil = :movil"),
+    @NamedQuery(name = "EmpleadoEntity.findByIdcargo", query = "SELECT e FROM EmpleadoEntity e WHERE e.idcargo = :idcargo"),
+    @NamedQuery(name = "EmpleadoEntity.findByDireccion", query = "SELECT e FROM EmpleadoEntity e WHERE e.direccion = :direccion")})
 public class EmpleadoEntity implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @Column(name = "idEmpleado")
     private String idEmpleado;
     @Basic(optional = false)
+    @Column(name = "codEmpleado")
     private String codEmpleado;
     @Basic(optional = false)
+    @Column(name = "nombre")
     private String nombre;
     @Basic(optional = false)
+    @Column(name = "apellido")
     private String apellido;
-    @Temporal(TemporalType.DATE)
-    private Date fechaNacimiento;
+    @Column(name = "edad")
+    private String edad;
     @Basic(optional = false)
+    @Column(name = "correo")
     private String correo;
+    @Column(name = "telefono")
     private String telefono;
+    @Column(name = "movil")
     private String movil;
     @Basic(optional = false)
+    @Column(name = "idcargo")
     private String idcargo;
     @Basic(optional = false)
+    @Column(name = "direccion")
     private String direccion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpleado")
-    private List<ReservacionEntity> reservacionEntityList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpleado")
-    private List<UsuariosempleadosEntity> usuariosempleadosEntityList;
 
     public EmpleadoEntity() {
     }
@@ -113,12 +112,12 @@ public class EmpleadoEntity implements Serializable {
         this.apellido = apellido;
     }
 
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
+    public String getEdad() {
+        return edad;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setEdad(String edad) {
+        this.edad = edad;
     }
 
     public String getCorreo() {
@@ -159,22 +158,6 @@ public class EmpleadoEntity implements Serializable {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public List<ReservacionEntity> getReservacionEntityList() {
-        return reservacionEntityList;
-    }
-
-    public void setReservacionEntityList(List<ReservacionEntity> reservacionEntityList) {
-        this.reservacionEntityList = reservacionEntityList;
-    }
-
-    public List<UsuariosempleadosEntity> getUsuariosempleadosEntityList() {
-        return usuariosempleadosEntityList;
-    }
-
-    public void setUsuariosempleadosEntityList(List<UsuariosempleadosEntity> usuariosempleadosEntityList) {
-        this.usuariosempleadosEntityList = usuariosempleadosEntityList;
     }
 
     @Override

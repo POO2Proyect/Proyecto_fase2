@@ -23,7 +23,7 @@
                         <h:panelGrid columns="4" styleClass="table">
                             <h:outputLabel for="idTransporte" value="idTransporte"/>
                             <h:inputText id="idTransporte" styleClass="form-control" value="#{tranportesBean.transportes.idTransporte}" required="true" requiredMessage="Debes ingresar el idTransporte" validatorMessage="Id no valido">
-                                <f:validateRegex pattern="[A-Z]{2}[0-9]{6}"/>
+                                <f:validateRegex pattern="[A-Z]{3}[0-9]{6}"/>
                             </h:inputText>
                             <h:outputLabel for="placa" value="placa:"/>
                             <h:inputText id="placa" styleClass="form-control" value="#{tranportesBean.transportes.placa}" required="true" requiredMessage="Debes ingresar la placa">

@@ -14,7 +14,6 @@
     <class>entidades.TourEntity</class>
     <class>entidades.UsuariosempleadosEntity</class>
     <class>entidades.CabanasEntity</class>
-    <class>entidades.EmpleadoEntity</class>
     <class>entidades.TipodestinoEntity</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
