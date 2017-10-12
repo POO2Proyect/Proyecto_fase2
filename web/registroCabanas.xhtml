@@ -61,8 +61,7 @@
                     </h:form>
                 </div>
             </div>
-        </div>
-        <div class="row">
+            <div class="row">
             <h:form>
                 <h:dataTable styleClass="table" value="#{cabanasBean.listaCabanas}" var="cbn" rendered="#{cabanasBean.listaCabanas.size()>0}">
                     <h:column>
@@ -123,17 +122,19 @@
                         <f:facet name="header">
                             <h:outputLabel value="Operaciones" />
                         </f:facet>
-                        <h:commandButton value="Eliminar" styleClass="btn btn-danger" action="#{cabanasBean.eliminarCliente()}" onclick="return confirmarEliminacion();">
-                            <f:param name="idCliente" value="#{cbn.idCabanas}"/>
+                        <h:commandButton value="Eliminar" styleClass="btn btn-danger" action="#{cabanasBean.eliminarCabana()}" onclick="return confirmarEliminacion();">
+                            <f:param name="idCabana" value="#{cbn.idCabanas}"/>
                         </h:commandButton>&nbsp;
                         <h:commandButton value="Modificar" styleClass="btn btn-warning" action="#{cabanasBean.obtenerCabana()}">
-                            <f:param name="idCliente" value="#{cbn.idCabanas}"/>
+                            <f:param name="idCabana" value="#{cbn.idCabanas}"/>
                         </h:commandButton>
                     </h:column>
                     
                 </h:dataTable>
             </h:form>
         </div>
+        </div>
+        
         <h:outputScript>
             function confirmarEliminacion(){
                 return confirm("¿Está seguro que desea eliminar este Cabaña");

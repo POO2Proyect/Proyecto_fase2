@@ -40,7 +40,7 @@ public class CabanasBean {
 
     public String guardarCabana(){
         if(cabanasM.insertarCabana(cabanas) != 1){
-            modificarCliente();
+            modificarCabana();
             return "registroCabanas?faces-redirect?true";
         }else {
             JsfUtil.setFlashMessage("exito", "Cliente registrado exitosamente");
@@ -49,7 +49,7 @@ public class CabanasBean {
         }
     }
 
-    private String modificarCliente() {
+    private String modificarCabana() {
         if (cabanasM.modificarCabana(cabanas) > 0) {
             JsfUtil.setFlashMessage("exito", "Cliente modificado exitosamente");
         } else {
@@ -58,7 +58,7 @@ public class CabanasBean {
         return "registroClientes?faces-redirect=true";
     }
     
-     public String eliminarCliente() {
+     public String eliminarCabana() {
         // Leyendo el parametro enviado desde la vista
         String idCabana = JsfUtil.getRequest().getParameter("idCabana");
         if (cabanasM.eliminarCabana(idCabana) > 0) {
@@ -68,5 +68,10 @@ public class CabanasBean {
         }
         return "registroClientes?faces-redirect=true";
     }
+     
+     public void obtenerCabana(){
+         String idCabana = JsfUtil.getRequest().getParameter("idCabanas");
+         cabanas = cabanasM.obtenerCabanas(idCabana);
+     }
     
 }

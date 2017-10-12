@@ -11,6 +11,8 @@ import utils.JpaUtil;
  * @author Usuario
  */
 public class CabanasModel {
+    
+    
     public List<CabanasEntity> listarCabanas(){
         //creamos una instancia de EntityManager
         EntityManager em = JpaUtil.getEntityManager();
