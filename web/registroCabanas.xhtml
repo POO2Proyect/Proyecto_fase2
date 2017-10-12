@@ -45,15 +45,15 @@
                                 
                             </h:inputText>
                             <h:outputLabel for="precioNoche" value="Precio de Noche" />
-                            <h:inputText id="precioN" styleClass="form-control" value="#{cabanasBean.cabanas.precioDia}" required="true" requiredMessage="Precion Invalido" validatorMessage="Parametro Requerido">
+                            <h:inputText id="precioN" styleClass="form-control" value="#{cabanasBean.cabanas.precioNoche}" required="true" requiredMessage="Precion Invalido" validatorMessage="Parametro Requerido">
                                 
                             </h:inputText>
                             <h:outputLabel for="precioTodo" value="Precio 24 Horas" />
-                            <h:inputText id="precioT" styleClass="form-control" value="#{cabanasBean.cabanas.precioDia}" required="true" requiredMessage="Precion Invalido" validatorMessage="Parametro Requerido">
+                            <h:inputText id="precioT" styleClass="form-control" value="#{cabanasBean.cabanas.precioDN}" required="true" requiredMessage="Precion Invalido" validatorMessage="Parametro Requerido">
                                 
                             </h:inputText>
                             <h:outputLabel for="descripcion" value="Descripcion" />
-                            <h:inputText id="descripcion" styleClass="form-control" value="#{cabanasBean.cabanas.precioDia}" required="true" requiredMessage="Precion Invalido" validatorMessage="Parametro Requerido">
+                            <h:inputText id="descripcion" styleClass="form-control" value="#{cabanasBean.cabanas.descripcion}" required="true" requiredMessage="Precion Invalido" validatorMessage="Parametro Requerido">
                             </h:inputText>
                             </h:panelGrid>
                         <h:commandButton id="guardar" value="Guardar" styleClass="btn btn-success" style="margin-right: 10px" action="#{cabanasBean.guardarCabana()}" />
