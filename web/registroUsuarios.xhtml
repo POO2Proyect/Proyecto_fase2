@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Registro de Usuarios</title>
+        <h:outputStylesheet name="css/bootstrap.min.css" />
+        <h:outputStylesheet name="css/alertify.core.css" />
+        <h:outputStylesheet name="css/alertify.default.css" />
+        <h:outputScript name="js/alertify.js"/>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Registro de Usuarios</h2>
+                    <h:form id="miFormulario">
+                        <h:panelGroup layout="block" styleClass="alert alert-danger" rendered="#{not empty facesContext.messageList}">
+                            <h:messages  />
+                        </h:panelGroup>
+                        <h:panelGrid columns="4" styleClass="table">
+                            <h:outputLabel for="IdUsuario" value="idUsuario:"/>
+                            <h:inputText id="idUsuarios" styleClass="form-control" value="#{usuariosBean.usuario.idUsuarios}" required="true" requiredMessage="Debes ingresar el idUsuario" validatorMessage="Id no valido"/>
+ 
+                            <h:outputLabel for="usuario" value="usuario:"/>
+                            <h:inputText id="usuario" styleClass="form-control" value="#{usuariosBean.usuario.usuario}" required="true" requiredMessage="Debes ingresar NickName"> 
+                            </h:inputText>
+                            <h:outputLabel for="password" value="password:"/>
+                            <h:inputText id="password" styleClass="form-control" value="#{usuariosBean.usuario.password}" required="true" requiredMessage="Debes ingresar Password"/>
+                           
+                            <h:outputLabel for="clientes" value="Clientes:"/>
+                            <h:selectOneMenu id="idCliente" 
+                                             value="#{usuariosBean.usuario.idCliente}" 
+                                             title="codigoCliente" required="true" 
+                                             class="form-control"
+                                             requiredMessage="Debes seleccionar el cliente">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{clientesBean.listaClientes}"
+                                var="cliente" 
+                                               itemValue="#{cliente}" 
+                                               itemLabel="#{cliente.nombre}"/>
+                            </h:selectOneMenu>
+                           
+
+                            
+                        </h:panelGrid>
+                        <h:commandButton  value="Guardar" styleClass="btn btn-success" action="#{usuariosBean.guardarUsuario()}" style="margin-right:10px"/>
+                        <h:commandButton type="reset" value="Limpiar" styleClass="btn btn-danger"/>
+                    </h:form>
+                </div>
+            </div>
+<!--            <div class="row">
+                <h:form >
+                    <h:dataTable styleClass="table" value="#{usuariosBean.listaUsuarios}" 
+                                 var="est" rendered="#{usuariosBean.listaUsuarios.size()>0}">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="idUsuario"/>
+                            </f:facet>
+                            <h:outputText value="#{est.idUsuarios}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Usuario"/>
+                            </f:facet>
+                            <h:outputText value="#{est.usuario}"/>      
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="IdCliente"/>
+                            </f:facet>
+                            <h:outputText value="#{est.idCliente}"/>      
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Operaciones"/>
+                            </f:facet>
+                            <h:commandButton value="Eliminar" styleClass="btn btn-danger" action="#{usuariosBean.eliminarUsuario()}" onclick="return confirmarEliminacion();">
+                                <f:param name="idUsuario" value="#{est.idUsuarios}"/>
+                            </h:commandButton>&nbsp;
+                            <h:commandButton value="Modificar" styleClass="btn btn-warning" action="#{usuariosBean.modificarUsuarios()}">
+                                <f:param name="idUsuario" value="#{est.idUsuarios}"/>
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+-->
+        </div>
+        <h:outputScript>
+            function confirmarEliminacion(){
+                return confirm("¿Está seguro que desea eliminar este Usuario");
+            }
+            
+            <c:if test = "#{not empty flash.exito}" >
+                alertify.success('#{flash.exito}');
+            </c:if>
+        </h:outputScript>
+    </h:body>
+</html>
+
+
