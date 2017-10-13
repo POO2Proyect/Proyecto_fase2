@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entidades;
 
 import java.io.Serializable;
@@ -41,7 +36,7 @@ public class TourEntity implements Serializable {
     @Basic(optional = false)
     private String codTour;
     private String nombre;
-    private String precioUni;
+    private double precioUni;
     private String duracion;
     private String descripcion;
     @JoinColumn(name = "idDestino", referencedColumnName = "idTipoDestino")
@@ -86,11 +81,11 @@ public class TourEntity implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getPrecioUni() {
+    public double getPrecioUni() {
         return precioUni;
     }
 
-    public void setPrecioUni(String precioUni) {
+    public void setPrecioUni(double precioUni) {
         this.precioUni = precioUni;
     }
 

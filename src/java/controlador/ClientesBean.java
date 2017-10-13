@@ -6,7 +6,6 @@ import utils.JsfUtil;
 import entidades.ClientesEntity;
 import java.util.List;
 import modelo.ClientesModel;
-import utils.JpaUtil;
 
 /**
  * @author Usuario

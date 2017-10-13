@@ -1,6 +1,6 @@
 package modelo;
 
-import entidades.CabanasEntity;
+import entidades.TourEntity;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -11,14 +11,14 @@ import utils.JpaUtil;
  * @author Usuario
  */
 public class ToursModel {
-     public List<CabanasEntity> listarCabanas(){
+     public List<TourEntity> listarTours(){
         //creamos una instancia de EntityManager
         EntityManager em = JpaUtil.getEntityManager();
         try{
-            Query sql = em.createNamedQuery("CabanasEntity.findAll");
+            Query sql = em.createNamedQuery("TourEntity.findAll");
             //El método getResultList() de la clase Query permite obtener 
             // la lista de resultados de una consulta de selección
-            List<CabanasEntity> lista = sql.getResultList();
+            List<TourEntity> lista = sql.getResultList();
             em.close();
             // Cerrando el EntityManager
             return lista;
@@ -30,10 +30,10 @@ public class ToursModel {
         
     }
     
-    public CabanasEntity obtenerCabanas(String idCabana){
+    public TourEntity obtenerTour(String idTour){
         EntityManager em = JpaUtil.getEntityManager();
         try{
-            CabanasEntity cabanas = em.find(CabanasEntity.class, idCabana);
+            TourEntity cabanas = em.find(TourEntity.class, idTour);
             em.close();
             return cabanas;
         }catch(Exception e){
@@ -44,14 +44,14 @@ public class ToursModel {
         
     }
     
-    public int insertarCabana (CabanasEntity cabana){
+    public int insertarTours (TourEntity tour){
         
         EntityManager em = JpaUtil.getEntityManager();
         EntityTransaction tran = em.getTransaction();
         try{
             tran.begin();
             //Iniciando transacción
-            em.persist(cabana);
+            em.persist(tour);
             //Guardando el objeto en la BD
             tran.commit();
             //Confirmando la transacción
@@ -64,12 +64,12 @@ public class ToursModel {
         }
     }
     
-    public int modificarCabana (CabanasEntity cabana){
+    public int modificarTours(TourEntity tour){
         EntityManager em = JpaUtil.getEntityManager();
         EntityTransaction tran = em.getTransaction();
         try{
             tran.begin();
-            em.merge(cabana);
+            em.merge(tour);
             tran.commit();
             em.close();
             return 1;
@@ -80,16 +80,16 @@ public class ToursModel {
         }
     }
     
-    public int eliminarCabana (String cabana){
+    public int eliminarTours(String tour){
         EntityManager em = JpaUtil.getEntityManager();
         int filasEliminadas = 0;
         try{
             //Recuperando el objeto a eliminar
-            CabanasEntity est = em.find(CabanasEntity.class, cabana);
+            TourEntity est = em.find(TourEntity.class, tour);
             if(est != null){
                 EntityTransaction tran = em.getTransaction();
                 tran.begin();
-                em.remove(cabana);
+                em.remove(tour);
                 tran.commit();
                 filasEliminadas =1;
                 em.close();

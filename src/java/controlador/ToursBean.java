@@ -1,10 +1,14 @@
 package controlador;
 
-import entidades.ClientesEntity;
+import entidades.TipodestinoEntity;
+import entidades.TourEntity;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import modelo.ClientesModel;
+import javax.faces.model.SelectItem;
+import modelo.TipoDestinoModel;
+import modelo.ToursModel;
 import utils.JsfUtil;
 
 /**
@@ -13,62 +17,87 @@ import utils.JsfUtil;
 @ManagedBean
 @RequestScoped
 public class ToursBean {
-ClientesModel modelo = new ClientesModel();
-    private ClientesEntity cliente;
-        private List<ClientesEntity> listaClientes;
+    
+    ToursModel modelo = new ToursModel();
+    private TourEntity tour;
+    private TipodestinoEntity Tipotour;
+    private List<TourEntity> listaTour;
+    private List<SelectItem> listaTipoDestino;
 
     /**
      * Creates a new instance of ClientesBean
      */
     public ToursBean() {
-        cliente = new ClientesEntity();
+        tour = new TourEntity();
     }
     
-    public ClientesEntity getClientes(){
-        return cliente;
+    public TourEntity getTour() {
+        return tour;
     }
-    public void SetCliente(ClientesEntity cliente){
-        this.cliente = cliente;
+
+    public void setTour(TourEntity tour) {
+        this.tour = tour;
+    }
+
+    public TipodestinoEntity getTipotour() {
+        return Tipotour;
+    }
+
+    public void setTipotour(TipodestinoEntity Tipotour) {
+        this.Tipotour = Tipotour;
     }
     
-    public List<ClientesEntity> getListaClientes(){
-        return modelo.listarClientes();
+    public List<TourEntity> getListaTour() {
+        return listaTour;
     }
     
-     public String guardarCliente() {
-        if (modelo.insertarCliente(cliente) != 1) {
-            modificarCliente();
-            return "registroClientes?faces-redirect=true";
+    public List<SelectItem> getListaTipoDestino() {
+        this.listaTipoDestino = new ArrayList<SelectItem>();
+        TipoDestinoModel modelo = new TipoDestinoModel();
+        List<TipodestinoEntity> c = modelo.listarTipoDestino();
+        
+        for(TipodestinoEntity destino: c){
+            SelectItem tipoDestinoItem = new SelectItem(destino.getIdTipoDestino(), destino.getNombre());
+            this.listaTipoDestino.add(tipoDestinoItem);
+        }
+        return listaTipoDestino;
+    }
+
+    
+     public String guardarTours() {
+        if (modelo.insertarTours(tour) != 1) {
+            modificarTours();
+            return "registroTour?faces-redirect=true";
         } else {
-            JsfUtil.setFlashMessage("exito", "Cliente registrado exitosamente");
+            JsfUtil.setFlashMessage("exito", "Tours registrado exitosamente");
             //Forzando la redirección en el cliente
-            return "registroClientes?faces-redirect=true";
+            return "registroTour?faces-redirect=true";
         }
     }
      
-     public String eliminarCliente() {
+     public String eliminarTours() {
 // Leyendo el parametro enviado desde la vista
-        String idCliente = JsfUtil.getRequest().getParameter("idCliente");
-        if (modelo.eliminarCliente(idCliente) > 0) {
-            JsfUtil.setFlashMessage("exito", "Cliente eliminado exitosamente");
+        String idTours = JsfUtil.getRequest().getParameter("idTour");
+        if (modelo.eliminarTours(idTours) > 0) {
+            JsfUtil.setFlashMessage("exito", "Tours eliminado exitosamente");
         } else {
-            JsfUtil.setErrorMessage(null, "No se pudo borrar a este cliente");
+            JsfUtil.setErrorMessage(null, "No se pudo borrar a este Tours");
         }
-        return "registroClientes?faces-redirect=true";
+        return "registroTour?faces-redirect=true";
     }
      
-      public String modificarCliente() {
-        if (modelo.modificarCliente(cliente) > 0) {
-            JsfUtil.setFlashMessage("exito", "Cliente modificado exitosamente");
+      public String modificarTours() {
+        if (modelo.modificarTours(tour) > 0) {
+            JsfUtil.setFlashMessage("exito", "Tours modificado exitosamente");
         } else {
-            JsfUtil.setErrorMessage(null, "Nose pudo modificar el Cliente");
+            JsfUtil.setErrorMessage(null, "Nose pudo modificar el Tours");
         }
-        return "registroClientes?faces-redirect=true";
+        return "registroTour?faces-redirect=true";
     
     }
       
-        public void obtenerCliente() {
-        String idCliente = JsfUtil.getRequest().getParameter("idCliente");
-        cliente = modelo.obtenerCliente(idCliente);
+        public void obtenerTours() {
+        String idTour = JsfUtil.getRequest().getParameter("idTour");
+        tour = modelo.obtenerTour(idTour);
     }
 }

@@ -70,58 +70,29 @@
                              var="cbn" rendered="#{cabanasBean.listaCabanas.size()>=0}">
                     <h:column>
                         <f:facet name="header">
-                                 <h:outputLabel value="idCabanas" />
+                                 <h:outputLabel value="idDestino" />
                         </f:facet>
                         <h:outputText value="#{cbn.idCabanas}" />
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputLabel value="Codigo Cabaña" />
+                            <h:outputLabel value="Nombre Destino" />
                         </f:facet>
                         <h:outputText value="#{cbn.codCabana}" />
                     </h:column>
                     <h:column>
                         <f:facet name="hearder">
-                            <h:outputLabel value="Nombre" />
+                            <h:outputLabel value="Direccion" />
                         </f:facet>
                         <h:outputText value="#{cbn.nombre}" />
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputLabel value="Numero Local" />
+                            <h:outputLabel value="Caracteristicas" />
                         </f:facet>
                         <h:outputText value="#{cbn.numLocal}" />
                     </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputLabel value="Capacidad" />
-                        </f:facet>
-                        <h:outputText value="#{cbn.capacidad}" />
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputLabel value="Precio Diurno" />
-                        </f:facet>
-                        <h:outputText value="#{cbn.precioDia}" />
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputLabel value="Precio Nocturno" />
-                        </f:facet>
-                        <h:outputText value="#{cbn.precioNoche}" />
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputLabel value="Precio 24 Horal" />
-                        </f:facet>
-                        <h:outputText value="#{cbn.precioDN}" />
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputLabel value="Descripcion" />
-                        </f:facet>
-                        <h:outputText value="#{cbn.descripcion}" />
-                    </h:column>
+                    
                     <h:column>
                         <f:facet name="header">
                             <h:outputLabel value="Operaciones" />

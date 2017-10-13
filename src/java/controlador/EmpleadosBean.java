@@ -8,12 +8,9 @@ package controlador;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import utils.JsfUtil;
-import entidades.ClientesEntity;
 import entidades.EmpleadoEntity;
 import java.util.List;
-import modelo.ClientesModel;
 import modelo.EmpleadosModel;
-import utils.JpaUtil;
 /**
  *
  * @author Usuario
@@ -25,7 +22,7 @@ public class EmpleadosBean {
     
     EmpleadosModel modelo = new EmpleadosModel();
     private EmpleadoEntity empleados;
-        private List<ClientesEntity> listaEmpleados;
+        private List<EmpleadoEntity> listaEmpleados;
 
     /**
      * Creates a new instance of ClientesBean

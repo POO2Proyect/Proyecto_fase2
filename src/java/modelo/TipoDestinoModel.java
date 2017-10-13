@@ -1,7 +1,7 @@
 
 package modelo;
 
-import entidades.CabanasEntity;
+import entidades.TipodestinoEntity;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -13,14 +13,15 @@ import utils.JpaUtil;
  * @author Usuario
  */
 public class TipoDestinoModel {
-     public List<CabanasEntity> listarCabanas(){
+    
+     public List<TipodestinoEntity> listarTipoDestino(){
         //creamos una instancia de EntityManager
         EntityManager em = JpaUtil.getEntityManager();
         try{
-            Query sql = em.createNamedQuery("CabanasEntity.findAll");
+            Query sql = em.createNamedQuery("TipodestinoEntity.findAll");
             //El método getResultList() de la clase Query permite obtener 
             // la lista de resultados de una consulta de selección
-            List<CabanasEntity> lista = sql.getResultList();
+            List<TipodestinoEntity> lista = sql.getResultList();
             em.close();
             // Cerrando el EntityManager
             return lista;
@@ -32,12 +33,12 @@ public class TipoDestinoModel {
         
     }
     
-    public CabanasEntity obtenerCabanas(String idCabana){
+    public TipodestinoEntity obtenerDestino(int idDestino){
         EntityManager em = JpaUtil.getEntityManager();
         try{
-            CabanasEntity cabanas = em.find(CabanasEntity.class, idCabana);
+            TipodestinoEntity destino = em.find(TipodestinoEntity.class, idDestino);
             em.close();
-            return cabanas;
+            return destino;
         }catch(Exception e){
             System.out.println(e);
             em.close();
@@ -46,14 +47,14 @@ public class TipoDestinoModel {
         
     }
     
-    public int insertarCabana (CabanasEntity cabana){
+    public int insertarDestino(TipodestinoEntity destino){
         
         EntityManager em = JpaUtil.getEntityManager();
         EntityTransaction tran = em.getTransaction();
         try{
             tran.begin();
             //Iniciando transacción
-            em.persist(cabana);
+            em.persist(destino);
             //Guardando el objeto en la BD
             tran.commit();
             //Confirmando la transacción
@@ -66,12 +67,12 @@ public class TipoDestinoModel {
         }
     }
     
-    public int modificarCabana (CabanasEntity cabana){
+    public int modificarDestino(TipodestinoEntity destino){
         EntityManager em = JpaUtil.getEntityManager();
         EntityTransaction tran = em.getTransaction();
         try{
             tran.begin();
-            em.merge(cabana);
+            em.merge(destino);
             tran.commit();
             em.close();
             return 1;
@@ -82,16 +83,16 @@ public class TipoDestinoModel {
         }
     }
     
-    public int eliminarCabana (String cabana){
+    public int eliminarDestino(int destino){
         EntityManager em = JpaUtil.getEntityManager();
         int filasEliminadas = 0;
         try{
             //Recuperando el objeto a eliminar
-            CabanasEntity est = em.find(CabanasEntity.class, cabana);
+            TipodestinoEntity est = em.find(TipodestinoEntity.class, destino);
             if(est != null){
                 EntityTransaction tran = em.getTransaction();
                 tran.begin();
-                em.remove(cabana);
+                em.remove(destino);
                 tran.commit();
                 filasEliminadas =1;
                 em.close();

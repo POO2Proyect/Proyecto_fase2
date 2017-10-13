@@ -1,82 +1,82 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
-import entidades.ClientesEntity;
+import entidades.TipodestinoEntity;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import modelo.ClientesModel;
+import modelo.TipoDestinoModel;
 import utils.JsfUtil;
 
 /**
- *
  * @author Usuario
  */
 @ManagedBean
 @RequestScoped
 public class TipoDestinoBeans {
 
-   ClientesModel modelo = new ClientesModel();
-    private ClientesEntity cliente;
-        private List<ClientesEntity> listaClientes;
+    TipoDestinoModel modelo = new TipoDestinoModel();
+    private TipodestinoEntity destino;
+    private List<TipodestinoEntity> listarTipoDestino;
 
     /**
      * Creates a new instance of ClientesBean
      */
+    
     public TipoDestinoBeans() {
-        cliente = new ClientesEntity();
+        destino = new TipodestinoEntity();
     }
     
-    public ClientesEntity getClientes(){
-        return cliente;
+    public TipodestinoEntity getDestino(){
+        return destino;
     }
-    public void SetCliente(ClientesEntity cliente){
-        this.cliente = cliente;
-    }
-    
-    public List<ClientesEntity> getListaClientes(){
-        return modelo.listarClientes();
+    public void setDestino(TipodestinoEntity destino){
+        this.destino = destino;
     }
     
-     public String guardarCliente() {
-        if (modelo.insertarCliente(cliente) != 1) {
-            modificarCliente();
-            return "registroClientes?faces-redirect=true";
+    public List<TipodestinoEntity> getListarTipoDestino(){
+        return modelo.listarTipoDestino();
+    }
+    
+     public String guardarDestino() {
+        if (modelo.insertarDestino(destino) != 1) {
+            modificarDestino();
+            return "registroTipoDestino?faces-redirect=true";
         } else {
-            JsfUtil.setFlashMessage("exito", "Cliente registrado exitosamente");
+            JsfUtil.setFlashMessage("exito", "Destino registrado exitosamente");
             //Forzando la redirección en el cliente
-            return "registroClientes?faces-redirect=true";
+            return "registroTipoDestino?faces-redirect=true";
         }
     }
      
-     public String eliminarCliente() {
-// Leyendo el parametro enviado desde la vista
-        String idCliente = JsfUtil.getRequest().getParameter("idCliente");
-        if (modelo.eliminarCliente(idCliente) > 0) {
-            JsfUtil.setFlashMessage("exito", "Cliente eliminado exitosamente");
+     public String eliminarDestino() {
+        // Leyendo el parametro enviado desde la vista
+        String iddestino = JsfUtil.getRequest().getParameter("idDestino");
+        int idDestino;
+        idDestino = Integer.parseInt(iddestino);
+        if (modelo.eliminarDestino(idDestino) > 0) {
+            JsfUtil.setFlashMessage("exito", "Destino eliminado exitosamente");
         } else {
-            JsfUtil.setErrorMessage(null, "No se pudo borrar a este cliente");
+            JsfUtil.setErrorMessage(null, "No se pudo borrar a este destino");
         }
-        return "registroClientes?faces-redirect=true";
+        return "registroTipoDestino?faces-redirect=true";
     }
      
-      public String modificarCliente() {
-        if (modelo.modificarCliente(cliente) > 0) {
-            JsfUtil.setFlashMessage("exito", "Cliente modificado exitosamente");
+      public String modificarDestino() {
+        if (modelo.modificarDestino(destino) > 0) {
+            JsfUtil.setFlashMessage("exito", "Destino modificado exitosamente");
         } else {
-            JsfUtil.setErrorMessage(null, "Nose pudo modificar el Cliente");
+            JsfUtil.setErrorMessage(null, "Nose pudo modificar el Destino");
         }
-        return "registroClientes?faces-redirect=true";
+        return "registroTipoDestino?faces-redirect=true";
     
     }
       
-        public void obtenerCliente() {
-        String idCliente = JsfUtil.getRequest().getParameter("idCliente");
-        cliente = modelo.obtenerCliente(idCliente);
+        public void obtenerDestino() {
+        String iddestino = JsfUtil.getRequest().getParameter("idDestino");
+        int idDestino;
+        idDestino = Integer.parseInt(iddestino);
+        System.out.println(idDestino);
+        destino = modelo.obtenerDestino(idDestino);
     }
     
 }
