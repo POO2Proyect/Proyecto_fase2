@@ -102,4 +102,6 @@ public class ToursModel {
         em.close();
         return 0;
     }
+    
+    
 }
