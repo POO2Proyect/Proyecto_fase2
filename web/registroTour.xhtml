@@ -23,11 +23,11 @@
                         <h:panelGrid columns="4" styleClass="table">
                             <h:outputLabel for="idTour" value="Id Tours"/>
                             <h:inputText id="idTour" styleClass="form-control" value="#{toursBean.tour.idTour}" required="true" requiredMessage="Debes ingresar el id Tours" validatorMessage="Id no valido">
-                                <f:validateRegex pattern="[A-Z]{3}[0-9]{4}"/>
+                               
                             </h:inputText>
                             <h:outputLabel for="codTour" value="codigo Tour:"/>
                             <h:inputText id="codTour" styleClass="form-control" value="#{toursBean.tour.codTour}" required="true" requiredMessage="Debes ingresar el Codigo del Tours">
-                            <f:validateRegex pattern="[0-9]{10}"/>
+                            
                             </h:inputText>
                             <h:outputLabel for="nombre" value="nombre:"/>
                             <h:inputText id="nombre" styleClass="form-control" value="#{toursBean.tour.nombre}" required="true" requiredMessage="Debes ingresar Nombre"/>
@@ -48,7 +48,7 @@
                              
                                <h:outputLabel for="descripcion" value="Descripcion: "/>
                                <h:inputText id="descripcionT" value="#{toursBean.tour.descripcion}" required="true"  styleClass="form-control" requiredMessage="Debes ingresar telefono">
-                           <f:validateRegex pattern="[0-9]{8}"/>
+                           
                             </h:inputText>
                            
                         </h:panelGrid>
