@@ -10,8 +10,31 @@
         <h:outputStylesheet name="css/alertify.core.css" />
         <h:outputStylesheet name="css/alertify.default.css" />
         <h:outputScript name="js/alertify.js"/>
+        
+        <h:outputStylesheet name="assets/css/bootstrap.min.css" />
+        <h:outputStylesheet name="assets/css/bootstrap-theme.min.css" />
+        <h:outputStylesheet name="assets/css/owl.carousel.css" />
+        <h:outputStylesheet name="assets/css/owl.theme.default.min.css" />
+        <h:outputStylesheet name="assets/css/magnific-popup.css" />
+        <h:outputStylesheet name="assets/css/style.css" />
+        
     </h:head>
     <h:body>
+        
+         <div id="menu-item" class="menu-item hide-menu">
+            <div class="container">
+                <ul>
+                    <a href="index.html"><li>home</li></a>
+                    <a href="registroClientes.xhtml"><li>Registrarse</li></a>
+                    <a href="login.xhtml"><li>Iniciar  Sesion</li></a>
+                
+                </ul>
+            </div>
+        </div>
+        
+        <div class="main">
+            
+       
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -142,5 +165,6 @@
                 alertify.success('#{flash.exito}');
             </c:if>
         </h:outputScript>
+             </div>
     </h:body>
 </html>

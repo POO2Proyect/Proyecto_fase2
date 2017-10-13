@@ -5,13 +5,27 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
-        <title>Registro de Usuarios</title>
+        
+        <title>Xtreme Park::Registro Clientes</title>
+        
         <h:outputStylesheet name="css/bootstrap.min.css" />
         <h:outputStylesheet name="css/alertify.core.css" />
         <h:outputStylesheet name="css/alertify.default.css" />
         <h:outputScript name="js/alertify.js"/>
+        
+        
+        <h:outputStylesheet name="assets/css/bootstrap.min.css" />
+        <h:outputStylesheet name="assets/css/bootstrap-theme.min.css" />
+        <h:outputStylesheet name="assets/css/owl.carousel.css" />
+        <h:outputStylesheet name="assets/css/owl.theme.default.min.css" />
+        <h:outputStylesheet name="assets/css/magnific-popup.css" />
+        <h:outputStylesheet name="assets/css/style.css" />
     </h:head>
     <h:body>
+         
+        <div class="main">
+            
+        
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -98,6 +112,7 @@
                 alertify.success('#{flash.exito}');
             </c:if>
         </h:outputScript>
+            </div>
     </h:body>
 </html>
 
