@@ -5,7 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
-        <title>Registro de Clientes</title>
+        <title>Registro de Empleados</title>
         <h:outputStylesheet name="css/bootstrap.min.css" />
         <h:outputStylesheet name="css/alertify.core.css" />
         <h:outputStylesheet name="css/alertify.default.css" />
@@ -21,11 +21,11 @@
                             <h:messages  />
                         </h:panelGroup>
                         <h:panelGrid columns="4" styleClass="table">
-                            <h:outputLabel for="idEmpleado" value="idEmpleado:"/>
+                            <h:outputLabel for="idEmpleado" value="id Empleado:"/>
                             <h:inputText id="idEmpleado" styleClass="form-control" value="#{empleadosBean.empleados.idEmpleado}" required="true" requiredMessage="Debes ingresar el idEmpleado" validatorMessage="Id no valido">
                                 <f:validateRegex pattern="[A-Z]{2}[0-9]{6}"/>
                             </h:inputText>
-                            <h:outputLabel for="codEmpleado" value="codEmpleado:"/>
+                            <h:outputLabel for="codEmpleado" value="codigo Empleado:"/>
                             <h:inputText id="codEmpleado" styleClass="form-control" value="#{empleadosBean.empleados.codEmpleado}" required="true" requiredMessage="Debes ingresar el codempleado">
                             <f:validateRegex pattern="[0-9]{1}"/>
                             </h:inputText>
@@ -49,7 +49,7 @@
                             <h:inputText id="movil" value="#{empleadosBean.empleados.movil}" required="true"  styleClass="form-control" requiredMessage="Debes ingresar telefono movil">
                            <f:validateRegex pattern="[0-9]{8}"/>
                             </h:inputText>
-                             <h:outputLabel for="idcargo" value="idcargo:"/>
+                             <h:outputLabel for="idcargo" value="id cargo:"/>
                             <h:inputText id="idcargo" value="#{empleadosBean.empleados.idcargo}" required="true"  styleClass="form-control" requiredMessage="Debes ingresar un idcargo">
                             </h:inputText>
                             

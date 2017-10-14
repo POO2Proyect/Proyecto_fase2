@@ -6,8 +6,8 @@
 package entidades;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -15,8 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  *
@@ -25,23 +23,24 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "usuariosempleados")
 @NamedQueries({
-    @NamedQuery(name = "UsuariosempleadosEntity.findAll", query = "SELECT u FROM UsuariosempleadosEntity u")
+       @NamedQuery(name="UsuariosempleadosEntity.login", query="SELECT u FROM UsuariosempleadosEntity u WHERE u.usuarioEmp = :usuarioEmp AND u.passwordEmp = :passwordEmp")
+    ,@NamedQuery(name = "UsuariosempleadosEntity.findAll", query = "SELECT u FROM UsuariosempleadosEntity u")
     , @NamedQuery(name = "UsuariosempleadosEntity.findByIdUsuariosEmpleados", query = "SELECT u FROM UsuariosempleadosEntity u WHERE u.idUsuariosEmpleados = :idUsuariosEmpleados")
     , @NamedQuery(name = "UsuariosempleadosEntity.findByUsuarioEmp", query = "SELECT u FROM UsuariosempleadosEntity u WHERE u.usuarioEmp = :usuarioEmp")
-    , @NamedQuery(name = "UsuariosempleadosEntity.findByPasswordEmp", query = "SELECT u FROM UsuariosempleadosEntity u WHERE u.passwordEmp = :passwordEmp")
-    , @NamedQuery(name = "UsuariosempleadosEntity.findByFechaCreacion", query = "SELECT u FROM UsuariosempleadosEntity u WHERE u.fechaCreacion = :fechaCreacion")})
+    , @NamedQuery(name = "UsuariosempleadosEntity.findByPasswordEmp", query = "SELECT u FROM UsuariosempleadosEntity u WHERE u.passwordEmp = :passwordEmp")})
 public class UsuariosempleadosEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @Column(name = "idUsuariosEmpleados")
     private String idUsuariosEmpleados;
     @Basic(optional = false)
+    @Column(name = "usuarioEmp")
     private String usuarioEmp;
     @Basic(optional = false)
+    @Column(name = "passwordEmp")
     private String passwordEmp;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaCreacion;
     @JoinColumn(name = "idEmpleado", referencedColumnName = "idEmpleado")
     @ManyToOne(optional = false)
     private EmpleadoEntity idEmpleado;
@@ -84,14 +83,6 @@ public class UsuariosempleadosEntity implements Serializable {
 
     public void setPasswordEmp(String passwordEmp) {
         this.passwordEmp = passwordEmp;
-    }
-
-    public Date getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
     }
 
     public EmpleadoEntity getIdEmpleado() {

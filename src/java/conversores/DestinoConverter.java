@@ -31,16 +31,16 @@ public class DestinoConverter implements Converter {
     }
 
     @Override
-    public int getAsString(FacesContext context, UIComponent component, Object value) {
+    public String getAsString(FacesContext context, UIComponent component, Object value) {
      
          if (value == null) {
-            return 0;
+            return null;
         }
 
         if (value instanceof TipodestinoEntity) {
-            return ((TipodestinoEntity) value).getIdTipoDestino();
+            return ((TipodestinoEntity) value).getIdTipoDestino().toString();
         } else {
-            return 0;
+            return "";
         }
     }
     

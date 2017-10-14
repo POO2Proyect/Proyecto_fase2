@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      
+    <h:head>
+        <title>Registro de Ofertas</title>
+        <h:outputStylesheet name="css/bootstrap.min.css" />
+        <h:outputStylesheet name="css/alertify.core.css" />
+        <h:outputStylesheet name="css/alertify.default.css" />
+        <h:outputScript name="js/alertify.js"/>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Registro de Ofertas</h2>
+                    <h:form id="miFormulario">
+                        <h:panelGroup layout="block" styleClass="alert alert-danger" rendered="#{not empty facesContext.messageList}">
+                            <h:messages  />
+                        </h:panelGroup>
+                        <h:panelGrid columns="2" styleClass="table">
+                            <h:outputLabel for="IdOferta" value="idOferta:"/>
+                            <h:inputText id="idOferta" styleClass="form-control" value="#{ofertasBean.ofertas.idOfertas}" required="true" requiredMessage="Debes ingresar el idOferta" validatorMessage="Id no valido"/>
+ 
+                            <h:outputLabel for="codOferta" value="codOferta:"/>
+                            <h:inputText id="codOferta" styleClass="form-control" value="#{ofertasBean.ofertas.codOferta}" required="true" requiredMessage="Debes ingresar Codigo Oferta"> 
+                            </h:inputText>
+                            <h:outputLabel for="nombre" value="nombre:"/>
+                            <h:inputText id="nombre" styleClass="form-control" value="#{ofertasBean.ofertas.nombre}" required="true" requiredMessage="Debes ingresar Nombre"/>
+                           <h:outputLabel for="fechaCreacion" value="fechaCreacion:"/>
+                           <p:calendar id="fechaCreacion" pattern="yyyy/MM/dd" value="#{ofertasBean.ofertas.fechaCreacion}" showOn="button"/>
+                            <h:outputLabel for="fechaVence" value="fecha Vencimiento:"/>
+                            <p:calendar id="fechaVence" pattern="yyyy/MM/dd" value="#{ofertasBean.ofertas.fechaVence}" showOn="button"/>
+                          <h:outputLabel for="porcentaje" value="Porcentaje:"/>
+                          <h:inputText id="procentaje" styleClass="form-control" value="#{ofertasBean.ofertas.procentaje}" required="true" requiredMessage="Debes ingresar Porcentaje">
+                        <f:validateRegex pattern="[0-9]{1}"/>
+                          </h:inputText>
+                        <h:outputLabel for="Descripcion" value="Descripcion:"/>
+                        <h:inputText id="descripcion" styleClass="form-control" value="#{ofertasBean.ofertas.descripcion}" required="true" requiredMessage="Debes ingresar Descripcion"/>
+
+                            <h:outputLabel for="estadooferta" value="Estado de oferta:"/>
+                            <h:selectOneMenu id="idEstado" 
+                                             value="#{ofertasBean.ofertas.idEstadoOfertaReservacion}" 
+                                             title="estadooferta" required="true" 
+                                             class="form-control"
+                                             requiredMessage="Debes seleccionar un estado">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{estadoOfertaReservacionBean.listaEstado}"
+                                var="estado" 
+                                itemValue="#{estado}" 
+                                itemLabel="#{estado.estado}"></f:selectItems>
+                            </h:selectOneMenu>
+                            <h:outputLabel for="ofertaServicio" value="oferta Servicio:"/>
+                            <h:inputText id="idOfertaServicio" styleClass="form-control" value="#{ofertasBean.ofertas.idOfertaServicio}" required="false">
+                          </h:inputText>
+                            
+                        </h:panelGrid>
+                        <h:commandButton  value="Guardar" styleClass="btn btn-success" action="#{ofertasBean.guardarOferta()}" style="margin-right:10px"/>
+                        <h:commandButton type="reset" value="Limpiar" styleClass="btn btn-danger"/>
+                    </h:form>
+                </div>
+            </div>
+           <div class="row">
+                <h:form >
+                    <h:dataTable styleClass="table" value="#{ofertasBean.listaOfertas}" 
+                                 var="est" rendered="#{ofertasBean.listaOfertas.size()>0}">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="id Oferta"/>
+                            </f:facet>
+                            <h:outputText value="#{est.idOfertas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Codigo oferta"/>
+                            </f:facet>
+                            <h:outputText value="#{est.codOferta}"/>      
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Nombre"/>
+                            </f:facet>
+                            <h:outputText value="#{est.nombre}"/>      
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="fecha Creacion"/>
+                            </f:facet>
+                             <h:outputText value="#{est.fechaCreacion}"/>      
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="fecha Vencimiento"/>
+                            </f:facet>
+                             <h:outputText value="#{est.fechaVence}"/>      
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="porcentaje"/>
+                            </f:facet>
+                            <h:outputText value="#{est.procentaje}"/>      
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="descripcion"/>
+                            </f:facet>
+                            <h:outputText value="#{est.descripcion}"/>      
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Estado oferta"/>
+                            </f:facet>
+                             <h:outputText value="#{est.idEstadoOfertaReservacion}"/>      
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="estado de servicio"/>
+                            </f:facet>
+                             <h:outputText value="#{est.idOfertaServicio}"/>      
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Operaciones"/>
+                            </f:facet>
+                            <h:commandButton value="Eliminar" styleClass="btn btn-danger" action="#{ofertasBean.eliminarOferta()}" onclick="return confirmarEliminacion();">
+                                <f:param name="idOferta" value="#{est.idOfertas}"/>
+                            </h:commandButton>&nbsp;
+                            <h:commandButton value="Modificar" styleClass="btn btn-warning" action="#{ofertasBean.modificarOferta()}">
+                                <f:param name="idOferta" value="#{est.idOfertas}"/>
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+           </div>
+        </div>
+        <h:outputScript>
+            function confirmarEliminacion(){
+                return confirm("¿Está seguro que desea eliminar esta Oferta?");
+            }
+            
+            <c:if test = "#{not empty flash.exito}" >
+                alertify.success('#{flash.exito}');
+            </c:if>
+        </h:outputScript>
+    </h:body>
+</html>
+
+
+
+

@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Registro de Usuarios para Empleados</title>
+        <h:outputStylesheet name="css/bootstrap.min.css" />
+        <h:outputStylesheet name="css/alertify.core.css" />
+        <h:outputStylesheet name="css/alertify.default.css" />
+        <h:outputScript name="js/alertify.js"/>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Registro de Empleados</h2>
+                    <h:form id="miFormulario">
+                        <h:panelGroup layout="block" styleClass="alert alert-danger" rendered="#{not empty facesContext.messageList}">
+                            <h:messages/>
+                        </h:panelGroup>
+                        <h:panelGrid columns="4" styleClass="table">
+                            <h:outputLabel for="idUsuariosEmpleados" value="idEmpleado:"/>
+                            <h:inputText id="idUsuariosEmpleados" styleClass="form-control" value="#{usuariosEmpleadosBean.usuEmpleados.idUsuariosEmpleados}" required="true" requiredMessage="Debes ingresar el idEmpleado" validatorMessage="Id no valido">
+                        
+                         </h:inputText>
+                            <h:outputLabel for="usuarioEmp" value="usuarioEmp"/>
+                            <h:inputText id="usuarioEmp" styleClass="form-control" value="#{usuariosEmpleadosBean.usuEmpleados.usuarioEmp}" required="true" requiredMessage="Debes ingresar el usuario">
+                            
+                            </h:inputText>
+                            <h:outputLabel for="passwordEmp" value="passwordEmp"/>
+                            <h:inputSecret id="passwordEmp" styleClass="form-control" value="#{usuariosEmpleadosBean.usuEmpleados.passwordEmp}" required="true" requiredMessage="Debes ingresar password"/>
+                            
+                              <h:outputLabel for="idEmpleados" value="idEmpleados"/>
+                            <h:selectOneMenu id="idEmpleado" 
+                                             value="#{usuariosEmpleadosBean.usuEmpleados.idEmpleado}" 
+                                             title="codigoCliente" required="true" 
+                                             class="form-control"
+                                             requiredMessage="Debes seleccionar el IdempleadoUsuario">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{empleadosBean.listaEmpleados}"
+                                var="empleados" 
+                                               itemValue="#{empleados}" 
+                                               itemLabel="#{empleados.nombre}"/>
+                            </h:selectOneMenu>
+                             <h:outputLabel for="idPerfilEmpleados" value="idPerfilEmpleados"/>
+                            <h:selectOneMenu id="idPerfilEmpleados" 
+                                             value="#{usuariosEmpleadosBean.usuEmpleados.idPerfil}" 
+                                             title="idPerfilEmpleados" required="true" 
+                                             class="form-control"
+                                             requiredMessage="Debes seleccionar el Idperfil">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{perfilesBean.listaPerfiles}"
+                                var="perfil" 
+                                               itemValue="#{perfil}" 
+                                               itemLabel="#{perfil.perfil}"/>
+                            </h:selectOneMenu>
+                           
+                        </h:panelGrid>
+                        <h:commandButton  value="Guardar" styleClass="btn btn-success" action="#{usuariosEmpleadosBean.guardarusuEmpleados()}" style="margin-right:10px"/>
+                        <h:commandButton type="reset" value="Limpiar" styleClass="btn btn-danger"/>
+                    </h:form>
+                </div>
+            </div>
+            <div class="row">
+            </div>
+        </div>
+        <h:outputScript>
+            function confirmarEliminacion(){
+                return confirm("¿Está seguro que desea eliminar este Empleado?");
+            }
+            
+            <c:if test = "#{not empty flash.exito}" >
+                alertify.success('#{flash.exito}');
+            </c:if>
+        </h:outputScript>
+    </h:body>
+</html>

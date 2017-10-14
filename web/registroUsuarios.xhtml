@@ -5,27 +5,13 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
-        
-        <title>Xtreme Park::Registro Clientes</title>
-        
+        <title>Registro de Usuarios</title>
         <h:outputStylesheet name="css/bootstrap.min.css" />
         <h:outputStylesheet name="css/alertify.core.css" />
         <h:outputStylesheet name="css/alertify.default.css" />
         <h:outputScript name="js/alertify.js"/>
-        
-        
-        <h:outputStylesheet name="assets/css/bootstrap.min.css" />
-        <h:outputStylesheet name="assets/css/bootstrap-theme.min.css" />
-        <h:outputStylesheet name="assets/css/owl.carousel.css" />
-        <h:outputStylesheet name="assets/css/owl.theme.default.min.css" />
-        <h:outputStylesheet name="assets/css/magnific-popup.css" />
-        <h:outputStylesheet name="assets/css/style.css" />
     </h:head>
     <h:body>
-         
-        <div class="main">
-            
-        
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -35,14 +21,15 @@
                             <h:messages  />
                         </h:panelGroup>
                         <h:panelGrid columns="4" styleClass="table">
-                            <h:outputLabel for="IdUsuario" value="idUsuario:"/>
+                            <h:outputLabel for="IdUsuario" value="id Usuario:"/>
                             <h:inputText id="idUsuarios" styleClass="form-control" value="#{usuariosBean.usuario.idUsuarios}" required="true" requiredMessage="Debes ingresar el idUsuario" validatorMessage="Id no valido"/>
  
                             <h:outputLabel for="usuario" value="usuario:"/>
                             <h:inputText id="usuario" styleClass="form-control" value="#{usuariosBean.usuario.usuario}" required="true" requiredMessage="Debes ingresar NickName"> 
                             </h:inputText>
                             <h:outputLabel for="password" value="password:"/>
-                            <h:inputText id="password" styleClass="form-control" value="#{usuariosBean.usuario.password}" required="true" requiredMessage="Debes ingresar Password"/>
+                          
+                            <h:inputSecret id="password" styleClass="form-control" value="#{usuariosBean.usuario.password}" required="true" requiredMessage="Debes ingresar Password"/>
                            
                             <h:outputLabel for="clientes" value="Clientes:"/>
                             <h:selectOneMenu id="idCliente" 
@@ -112,7 +99,6 @@
                 alertify.success('#{flash.exito}');
             </c:if>
         </h:outputScript>
-            </div>
     </h:body>
 </html>
 

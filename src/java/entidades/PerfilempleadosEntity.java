@@ -6,19 +6,17 @@
 package entidades;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
  *
- * @author Nestor2
+ * @author Gio
  */
 @Entity
 @Table(name = "perfilempleados")
@@ -31,11 +29,11 @@ public class PerfilempleadosEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @Column(name = "idPerfilEmpleados")
     private Integer idPerfilEmpleados;
     @Basic(optional = false)
+    @Column(name = "perfil")
     private String perfil;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPerfil")
-    private List<UsuariosempleadosEntity> usuariosempleadosEntityList;
 
     public PerfilempleadosEntity() {
     }
@@ -65,14 +63,6 @@ public class PerfilempleadosEntity implements Serializable {
         this.perfil = perfil;
     }
 
-    public List<UsuariosempleadosEntity> getUsuariosempleadosEntityList() {
-        return usuariosempleadosEntityList;
-    }
-
-    public void setUsuariosempleadosEntityList(List<UsuariosempleadosEntity> usuariosempleadosEntityList) {
-        this.usuariosempleadosEntityList = usuariosempleadosEntityList;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -97,5 +87,6 @@ public class PerfilempleadosEntity implements Serializable {
     public String toString() {
         return "entidades.PerfilempleadosEntity[ idPerfilEmpleados=" + idPerfilEmpleados + " ]";
     }
-    
 }
+    
+

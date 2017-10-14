@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package modelo;
-
-import entidades.ClientesEntity;
-import entidades.UsuariosEntity;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,20 +11,21 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.List;
 import utils.JpaUtil;
+import entidades.OfertasEntity;
 /**
  *
  * @author Nestor2
  */
-public class UsuariosModel {
+public class OfertasModel {
     
-    public List<UsuariosEntity> listarUsuarios() {
+    public List<OfertasEntity> listarOferta() {
 //Obtengo una instancia de EntityManager
         EntityManager em = JpaUtil.getEntityManager();
         try {
-            Query consulta = em.createNamedQuery("UsuariosEntity.findAll");
+            Query consulta = em.createNamedQuery("OfertasEntity.findAll");
 //El método getResultList() de la clase Query permite obtener 
 // la lista de resultados de una consulta de selección
-            List<UsuariosEntity> lista = consulta.getResultList();
+            List<OfertasEntity> lista = consulta.getResultList();
             em.close();
 // Cerrando el EntityManager
             return lista;
@@ -35,29 +33,29 @@ public class UsuariosModel {
             em.close();
             return null;
         }
-    }
+}
     
-     public UsuariosEntity obtenerUsuario(String idUsuario) {
+    public OfertasEntity obtenerOferta(String idOferta) {
         EntityManager em = JpaUtil.getEntityManager();
         try {
 //Recupero el objeto desde la BD a través del método find
-            UsuariosEntity usuario = em.find(UsuariosEntity.class,
-                    idUsuario);
+           OfertasEntity oferta = em.find(OfertasEntity.class,
+                    idOferta);
             em.close();
-            return usuario;
+            return oferta;
         } catch (Exception e) {
             em.close();
             return null;
         }
-    }
-     
-      public int insertarUsuario(UsuariosEntity usuario) {
+}
+    
+public int insertarOferta(OfertasEntity oferta) {
         EntityManager em = JpaUtil.getEntityManager();
         EntityTransaction tran = em.getTransaction();
         try {
             tran.begin();
 //Iniciando transacción
-            em.persist(usuario);
+            em.persist(oferta);
 //Guardando el objeto en la BD
             tran.commit();
 //Confirmando la transacción
@@ -68,13 +66,14 @@ public class UsuariosModel {
             return 0;
         }
     }
-      public int modificarUsuarios(UsuariosEntity usuario) {
+      
+public int modificarOferta(OfertasEntity oferta) {
         EntityManager em = JpaUtil.getEntityManager();
         EntityTransaction tran = em.getTransaction();
         try {
             tran.begin();
 //Iniciando transacción
-            em.merge(usuario);
+            em.merge(oferta);
 //Actualizando el objeto en la BD
             tran.commit();
 //Confirmando la transacción
@@ -84,14 +83,14 @@ public class UsuariosModel {
             em.close();
             return 0;
         }
-    }
-      
-    public int eliminarUsuarios(String usuario) {
+}
+
+public int eliminarOferta(String oferta) {
         EntityManager em = JpaUtil.getEntityManager();
         int filasBorradas = 0;
         try {
 //Recuperando el objeto a eliminar
-            UsuariosEntity est = em.find(UsuariosEntity.class,usuario);
+            OfertasEntity est = em.find(OfertasEntity.class,oferta);
             if (est != null) {
                 EntityTransaction tran = em.getTransaction();
                 tran.begin();
@@ -109,37 +108,89 @@ public class UsuariosModel {
             return 0;
         }
     }
-    
-    
-    //llaves foraneas
-    public List<ClientesEntity> listarClientes() {
-//Obtengo una instancia de EntityManager
-        EntityManager em = JpaUtil.getEntityManager();
-        try {
-            Query consulta = em.createNamedQuery("ClientesEntity.findAll");
-//El método getResultList() de la clase Query permite obtener 
-// la lista de resultados de una consulta de selección
-            List<ClientesEntity> lista = consulta.getResultList();
-            em.close();
-// Cerrando el EntityManager
-            return lista;
-        } catch (Exception e) {
-            em.close();
-            return null;
-        }
-    }
-    
-    public boolean loginControl(String usuario, String password) {
-        EntityManager em = JpaUtil.getEntityManager();
-        try {
-            Query consulta = em.createNamedQuery("UsuariosEntity.login");
-            consulta.setParameter("usuario", usuario);
-            consulta.setParameter("password", password);
-             System.out.println(consulta);
-            return !consulta.getResultList().isEmpty();
-         
-        } catch (Exception e) {
-            return false;
-        }
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

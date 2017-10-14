@@ -6,12 +6,15 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -33,6 +36,9 @@ import javax.persistence.Table;
     @NamedQuery(name = "EmpleadoEntity.findByIdcargo", query = "SELECT e FROM EmpleadoEntity e WHERE e.idcargo = :idcargo"),
     @NamedQuery(name = "EmpleadoEntity.findByDireccion", query = "SELECT e FROM EmpleadoEntity e WHERE e.direccion = :direccion")})
 public class EmpleadoEntity implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpleado")
+    private List<UsuariosempleadosEntity> usuariosempleadosEntityList;
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -183,6 +189,14 @@ public class EmpleadoEntity implements Serializable {
     @Override
     public String toString() {
         return "entidades.EmpleadoEntity[ idEmpleado=" + idEmpleado + " ]";
+    }
+
+    public List<UsuariosempleadosEntity> getUsuariosempleadosEntityList() {
+        return usuariosempleadosEntityList;
+    }
+
+    public void setUsuariosempleadosEntityList(List<UsuariosempleadosEntity> usuariosempleadosEntityList) {
+        this.usuariosempleadosEntityList = usuariosempleadosEntityList;
     }
     
 }

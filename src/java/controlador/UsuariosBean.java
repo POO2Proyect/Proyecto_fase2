@@ -8,6 +8,8 @@ import java.util.List;
 import utils.JpaUtil;
 import entidades.UsuariosEntity;
 import java.util.ArrayList;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import modelo.ClientesModel;
 import modelo.UsuariosModel;
@@ -58,6 +60,8 @@ public class UsuariosBean {
      */
     public UsuariosBean() {
         usuario = new UsuariosEntity();
+        this.usuario1="";
+        this.password="";
     }
     
      public String guardarUsuario() {
@@ -96,6 +100,32 @@ public class UsuariosBean {
         String idUsuarios = JsfUtil.getRequest().getParameter("idUsuario");
         usuario= modelo.obtenerUsuario(idUsuarios);
     }
-        
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUsuario1() {
+        return usuario1;
+    }
+
+    public void setUsuario1(String usuario1) {
+        this.usuario1 = usuario1;
+    }
+        private String password;
+    private String usuario1;
+
+    public String loginControl() {
+        if (modelo.loginControl(usuario1, password)) {
+            return "registroOfertas.xhtml?faces-redirect=true";
+        }
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "usuario o password invalidos", "Error de acceso"));
+        return null;
+    }
     
 }

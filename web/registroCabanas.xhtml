@@ -14,13 +14,13 @@
         <div class="container" >
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Registro de las Canañas del Centro Turistico</h2>
+                    <h2>Registro de las Cabañas del Centro Turistico</h2>
                     <h:form id="miFormulario">
                         <h:panelGroup layout="block" styleClass="alert alert-danger" rendered="#{not empty facesContext.messageList}">
                             <h:messages />
                         </h:panelGroup>
                         <h:panelGrid columns="4" styleClass="table" >
-                            <h:outputLabel for="idCabanas" value="idCabanas " />
+                            <h:outputLabel for="idCabanas" value="id Cabaña " />
                             <h:inputText id="idCabana" styleClass="form-control" value="#{cabanasBean.cabanas.idCabanas}" required="true" requiredMessage="Debe ingresar el idCliente" validatorMessage="Id no valido">
                                 
                             </h:inputText>
@@ -67,30 +67,30 @@
             <div class="row">
             <h:form>
                 <h:dataTable styleClass="table" value="#{cabanasBean.listaCabanas}" 
-                             var="cbn" rendered="#{cabanasBean.listaCabanas.size()>=0}">
+                             var="cbn" rendered="#{cabanasBean.listaCabanas.size()>0}">
                     <h:column>
                         <f:facet name="header">
-                                 <h:outputLabel value="idDestino" />
+                                 <h:outputLabel value="codigo Cabaña" />
                         </f:facet>
                         <h:outputText value="#{cbn.idCabanas}" />
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputLabel value="Nombre Destino" />
+                            <h:outputLabel value="Precio 24 horas" />
                         </f:facet>
-                        <h:outputText value="#{cbn.codCabana}" />
+                        <h:outputText value="#{cbn.precioDN}" />
                     </h:column>
                     <h:column>
-                        <f:facet name="hearder">
-                            <h:outputLabel value="Direccion" />
+                        <f:facet name="header">
+                            <h:outputLabel value="Capacidad" />
                         </f:facet>
-                        <h:outputText value="#{cbn.nombre}" />
+                        <h:outputText value="#{cbn.capacidad}" />
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             <h:outputLabel value="Caracteristicas" />
                         </f:facet>
-                        <h:outputText value="#{cbn.numLocal}" />
+                        <h:outputText value="#{cbn.descripcion}" />
                     </h:column>
                     
                     <h:column>

@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Registro de Clientes</title>
+        <h:outputStylesheet name="css/bootstrap.min.css" />
+        <h:outputStylesheet name="css/alertify.core.css" />
+        <h:outputStylesheet name="css/alertify.default.css" />
+        <h:outputScript name="js/alertify.js"/>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Registro de Transportes</h2>
+                    <h:form id="miFormulario">
+                        <h:panelGroup layout="block" styleClass="alert alert-danger" rendered="#{not empty facesContext.messageList}">
+                            <h:messages  />
+                        </h:panelGroup>
+                        <h:panelGrid columns="4" styleClass="table">
+                            <h:outputLabel for="idPerfilEmpleados" value="idPerfilEmpleados"/>
+                            <h:inputText id="idPerfilEmpleados" styleClass="form-control" value="#{perfilesBean.perfil.idPerfilEmpleados}" required="true" requiredMessage="Debes ingresar el idTransporte" validatorMessage="Id no valido">
+                                
+                            </h:inputText>
+                            <h:outputLabel for="perfil" value="perfil"/>
+                            <h:inputText id="perfil" styleClass="form-control" value="#{perfilesBean.perfil.perfil}" required="true" requiredMessage="Debes ingresar la placa">
+                            
+                            </h:inputText>
+                           
+                           
+                            
+                           
+                            
+                        </h:panelGrid>
+                        <h:commandButton  value="Guardar" styleClass="btn btn-success" action="#{perfilesBean.guardarPerfil()}" style="margin-right:10px"/>
+                        <h:commandButton type="reset" value="Limpiar" styleClass="btn btn-danger"/>
+                    </h:form>
+                </div>
+            </div>
+            <div class="row">
+                <h:form >
+                    <h:dataTable styleClass="table" value="#{perfilesBean.listaPerfil}" 
+                                 var="est" rendered="#{perfilesBean.listaPerfil.size()>0}">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="idPerfilEmpleados"/>
+                            </f:facet>
+                            <h:outputText value="#{est.idPerfilEmpleados}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="perfil"/>
+                            </f:facet>
+                            <h:outputText value="#{est.perfil}"/>      
+                        </h:column>
+                        
+                       
+                              
+                           
+                            
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Operaciones"/>
+                            </f:facet>
+                            <h:commandButton value="Eliminar" styleClass="btn btn-danger" action="#{perfilesBean.eliminarPerfil()}" onclick="return confirmarEliminacion();">
+                                <f:param name="idPerfilEmpleados" value="#{est.idPerfilEmpleados}"/>
+                            </h:commandButton>&nbsp;
+                            <h:commandButton value="Modificar" styleClass="btn btn-warning" action="#{perfilesBean.modificarPerfil()}">
+                                <f:param name="idTransporte" value="#{est.idPerfilEmpleados}"/>
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+        <h:outputScript>
+            function confirmarEliminacion(){
+                return confirm("¿Está seguro que desea eliminar este Empleado?");
+            }
+            
+            <c:if test = "#{not empty flash.exito}" >
+                alertify.success('#{flash.exito}');
+            </c:if>
+        </h:outputScript>
+    </h:body>
+</html>
