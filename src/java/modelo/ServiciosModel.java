@@ -1,25 +1,30 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package modelo;
-
-import entidades.TourEntity;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import utils.JpaUtil;
-
+import entidades.ServiciosEntity;
 /**
- * @author Usuario
+ *
+ * @author Nestor2
  */
-public class ToursModel {
+public class ServiciosModel {
     
-     public List<TourEntity> listarTours(){
+    
+     public List<ServiciosEntity> listarServicios(){
         //creamos una instancia de EntityManager
         EntityManager em = JpaUtil.getEntityManager();
         try{
             Query sql = em.createNamedQuery("TourEntity.findAll");
             //El método getResultList() de la clase Query permite obtener 
             // la lista de resultados de una consulta de selección
-            List<TourEntity> lista = sql.getResultList();
+            List<ServiciosEntity> lista = sql.getResultList();
             em.close();
             // Cerrando el EntityManager
             return lista;
@@ -30,13 +35,13 @@ public class ToursModel {
         }
         
     }
-    
-    public TourEntity obtenerTour(String idTour){
+     
+     public ServiciosEntity obtenerServicio(String idServicio){
         EntityManager em = JpaUtil.getEntityManager();
         try{
-            TourEntity tour = em.find(TourEntity.class, idTour);
+            ServiciosEntity servicios = em.find(ServiciosEntity.class, idServicio);
             em.close();
-            return tour;
+            return servicios;
         }catch(Exception e){
             System.out.println(e);
             em.close();
@@ -44,15 +49,15 @@ public class ToursModel {
         }
         
     }
-    
-    public int insertarTours (TourEntity tour){
+     
+     public int insertarServicio (ServiciosEntity servicios){
         
         EntityManager em = JpaUtil.getEntityManager();
         EntityTransaction tran = em.getTransaction();
         try{
             tran.begin();
             //Iniciando transacción
-            em.persist(tour);
+            em.persist(servicios);
             //Guardando el objeto en la BD
             tran.commit();
             //Confirmando la transacción
@@ -65,12 +70,12 @@ public class ToursModel {
         }
     }
     
-    public int modificarTours(TourEntity tour){
+      public int modificarServicio(ServiciosEntity servicio){
         EntityManager em = JpaUtil.getEntityManager();
         EntityTransaction tran = em.getTransaction();
         try{
             tran.begin();
-            em.merge(tour);
+            em.merge(servicio);
             tran.commit();
             em.close();
             return 1;
@@ -80,17 +85,17 @@ public class ToursModel {
             return 0;
         }
     }
-    
-    public int eliminarTours(String tour){
+      
+      public int eliminarServicio(String servicio){
         EntityManager em = JpaUtil.getEntityManager();
         int filasEliminadas = 0;
         try{
             //Recuperando el objeto a eliminar
-            TourEntity est = em.find(TourEntity.class, tour);
+            ServiciosEntity est = em.find(ServiciosEntity.class,servicio);
             if(est != null){
                 EntityTransaction tran = em.getTransaction();
                 tran.begin();
-                em.remove(tour);
+                em.remove(servicio);
                 tran.commit();
                 filasEliminadas =1;
                 em.close();

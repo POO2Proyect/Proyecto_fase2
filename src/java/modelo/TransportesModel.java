@@ -6,8 +6,7 @@
 package modelo;
 
 
-import entidades.ClientesEntity;
-import entidades.EmpleadoEntity;
+
 import entidades.TransporteEntity;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;

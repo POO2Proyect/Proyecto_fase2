@@ -7,14 +7,12 @@ package entidades;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -32,26 +30,30 @@ import javax.persistence.Table;
     , @NamedQuery(name = "TransporteEntity.findByColor", query = "SELECT t FROM TransporteEntity t WHERE t.color = :color")
     , @NamedQuery(name = "TransporteEntity.findByTipo", query = "SELECT t FROM TransporteEntity t WHERE t.tipo = :tipo")
     , @NamedQuery(name = "TransporteEntity.findByCapacidad", query = "SELECT t FROM TransporteEntity t WHERE t.capacidad = :capacidad")
-    , @NamedQuery(name = "TransporteEntity.findByPrecio", query = "SELECT t FROM TransporteEntity t WHERE t.precio = :precio")
-    , @NamedQuery(name = "TransporteEntity.findByFoto", query = "SELECT t FROM TransporteEntity t WHERE t.foto = :foto")})
+    , @NamedQuery(name = "TransporteEntity.findByPrecio", query = "SELECT t FROM TransporteEntity t WHERE t.precio = :precio")})
 public class TransporteEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @Column(name = "idTransporte")
     private String idTransporte;
     @Basic(optional = false)
+    @Column(name = "placa")
     private String placa;
+    @Column(name = "marca")
     private String marca;
+    @Column(name = "modelo")
     private String modelo;
+    @Column(name = "color")
     private String color;
+    @Column(name = "tipo")
     private String tipo;
+    @Column(name = "capacidad")
     private Integer capacidad;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "precio")
     private BigDecimal precio;
-    private String foto;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTransporte")
-    private List<ServiciosEntity> serviciosEntityList;
 
     public TransporteEntity() {
     }
@@ -127,22 +129,6 @@ public class TransporteEntity implements Serializable {
 
     public void setPrecio(BigDecimal precio) {
         this.precio = precio;
-    }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
-
-    public List<ServiciosEntity> getServiciosEntityList() {
-        return serviciosEntityList;
-    }
-
-    public void setServiciosEntityList(List<ServiciosEntity> serviciosEntityList) {
-        this.serviciosEntityList = serviciosEntityList;
     }
 
     @Override

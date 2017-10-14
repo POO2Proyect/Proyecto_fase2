@@ -54,21 +54,21 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputLabel value="codEmpleado"/>
+                                <h:outputLabel value="codigo destino"/>
                             </f:facet>
                             <h:outputText value="#{est.nombre}"/>      
                         </h:column>
                         
                         <h:column>
                             <f:facet name="header">
-                                <h:outputLabel value="Nombre"/>
+                                <h:outputLabel value="Direccion"/>
                             </f:facet>
                             <h:outputText value="#{est.direccion}"/>
                         </h:column>
                         
                         <h:column>
                             <f:facet name="header">
-                                <h:outputLabel value="Apellido"/>
+                                <h:outputLabel value="Caracteristicas"/>
                             </f:facet>
                             <h:outputText value="#{est.caracteristicas}"/>
                         </h:column>
@@ -91,7 +91,7 @@
         </div>
         <h:outputScript>
             function confirmarEliminacion(){
-                return confirm("¿Está seguro que desea eliminar este Empleado?");
+                return confirm("¿Está seguro que desea eliminar es Destino?");
             }
             
             <c:if test = "#{not empty flash.exito}" >

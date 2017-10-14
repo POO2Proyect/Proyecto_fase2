@@ -38,7 +38,7 @@
                             
                             <h:outputLabel for="destino" value="Destino"/>
                             <h:selectOneMenu id="destinoT" value="#{toursBean.tour.idDestino}" class="form-control" >
-                                <f:selectItems value="#{toursBean.listaTipoDestino}" var="opc" itemValue="#{opc}" itemLabel="#{opc.nombre}"></f:selectItems>
+                                <f:selectItems value="#{tipoDestinoBeans.listarTipoDestino}" var="destino" itemValue="#{destino}" itemLabel="#{destino.nombre}"></f:selectItems>
                             </h:selectOneMenu>
                             
                             
@@ -63,13 +63,13 @@
                                  var="est" rendered="#{toursBean.listaTour.size()>0}">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputLabel value="idEmpleado"/>
+                                <h:outputLabel value="id Tour"/>
                             </f:facet>
                             <h:outputText value="#{est.idTour}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputLabel value="codEmpleado"/>
+                                <h:outputLabel value="cod Tour"/>
                             </f:facet>
                             <h:outputText value="#{est.codTour}"/>      
                         </h:column>
@@ -83,25 +83,25 @@
                         
                         <h:column>
                             <f:facet name="header">
-                                <h:outputLabel value="Apellido"/>
+                                <h:outputLabel value="Precio por persona"/>
                             </f:facet>
                             <h:outputText value="#{est.precioUni}"/>
                         </h:column>
                           <h:column>
                             <f:facet name="header">
-                                <h:outputLabel value="Edad"/>
+                                <h:outputLabel value="Destino"/>
                             </f:facet>
                               <h:outputText value="#{est.idDestino}"/>
                         </h:column>
                            <h:column>
                             <f:facet name="header">
-                                <h:outputLabel value="Correo"/>
+                                <h:outputLabel value="Duracion"/>
                             </f:facet>
                                <h:outputText value="#{est.duracion}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputLabel value="Telefono"/>
+                                <h:outputLabel value=" Descripcion"/>
                             </f:facet>
                             <h:outputText value="#{est.descripcion}"/>
                         </h:column>
@@ -111,10 +111,10 @@
                                 <h:outputLabel value="Operaciones"/>
                             </f:facet>
                             <h:commandButton value="Eliminar" styleClass="btn btn-danger" action="#{toursBean.eliminarTours()}" onclick="return confirmarEliminacion();">
-                                <f:param name="idEmpleado" value="#{est.idTour}"/>
+                                <f:param name="idTour" value="#{est.idTour}"/>
                             </h:commandButton>&nbsp;
                             <h:commandButton value="Modificar" styleClass="btn btn-warning" action="#{toursBean.obtenerTours()}">
-                                <f:param name="idEmpleado" value="#{est.idTour}"/>
+                                <f:param name="idTour" value="#{est.idTour}"/>
                             </h:commandButton>
                         </h:column>
                     </h:dataTable>

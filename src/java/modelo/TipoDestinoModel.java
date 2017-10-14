@@ -106,7 +106,5 @@ public class TipoDestinoModel {
         return 0;
     }
 
-    public TipodestinoEntity obtenerDestino(String value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 }

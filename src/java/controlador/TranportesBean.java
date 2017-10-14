@@ -8,12 +8,8 @@ package controlador;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import utils.JsfUtil;
-import entidades.ClientesEntity;
-import entidades.EmpleadoEntity;
 import entidades.TransporteEntity;
 import java.util.List;
-import modelo.ClientesModel;
-import modelo.EmpleadosModel;
 import modelo.TransportesModel;
 import utils.JpaUtil;
 /**

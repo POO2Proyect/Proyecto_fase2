@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      
+    <h:head>
+        <title>Registro de Servicios</title>
+        <h:outputStylesheet name="css/bootstrap.min.css" />
+        <h:outputStylesheet name="css/alertify.core.css" />
+        <h:outputStylesheet name="css/alertify.default.css" />
+        <h:outputScript name="js/alertify.js"/>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Registro de Servicios</h2>
+                    <h:form id="miFormulario">
+                        <h:panelGroup layout="block" styleClass="alert alert-danger" rendered="#{not empty facesContext.messageList}">
+                            <h:messages  />
+                        </h:panelGroup>
+                        <h:panelGrid columns="2" styleClass="table">
+                            <h:outputLabel for="IdServicio" value="id Servicio"/>
+                            <h:inputText id="idServicio" styleClass="form-control" value="#{serviciosBean.servicios.idServicios}" required="true" requiredMessage="Debes ingresar el idServicio" validatorMessage="Id no valido"/>
+ 
+                            <h:outputLabel for="nombre" value="nombre:"/>
+                            <h:inputText id="nombre" styleClass="form-control" value="#{serviciosBean.servicios.nombre}" required="true" requiredMessage="Debes ingresar Nombre"> 
+                            </h:inputText>
+                            <h:outputLabel for="precio" value="precio:"/>
+                            <h:inputText id="precio" styleClass="form-control" value="#{serviciosBean.servicios.precio}" required="true" requiredMessage="Debes ingresar Precio"/>
+                           <h:outputLabel for="horario" value="Horario:"/>
+                           <p:calendar id="horario" pattern="yyyy/MM/dd" value="#{serviciosBean.servicios.horario}" showOn="button"/>                            
+                          <h:outputLabel for="Descripcion" value="descripcion:"/>
+                          <h:inputText id="descripcion" styleClass="form-control" value="#{serviciosBean.servicios.descripcion}" required="true" requiredMessage="Debes ingresar Descripcion">
+                          </h:inputText>
+                            <h:outputLabel for="Cabaña" value="Codigo de hospedaje:"/>
+                            <h:selectOneMenu id="idCabanas" 
+                                             value="#{serviciosBean.servicios.idCabanas}" 
+                                             title="idcabana" required="true" 
+                                             class="form-control"
+                                             requiredMessage="Debes seleccionar un codigo de hospedaje">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{cabanasBean.listaCabanas}"
+                                var="cabana" 
+                                itemValue="#{cabana}" 
+                                itemLabel="#{cabana.idCabanas}"></f:selectItems>
+                            </h:selectOneMenu>
+                            
+                            <h:outputLabel for="Tour" value="Codigo de Tour:"/>
+                            <h:selectOneMenu id="idTour" 
+                                             value="#{serviciosBean.servicios.idTour}" 
+                                             title="idTour" required="true" 
+                                             class="form-control"
+                                             requiredMessage="Debes seleccionar un Tour">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{toursBean.listaTour}"
+                                var="tour" 
+                                itemValue="#{tour}" 
+                                itemLabel="#{tour.nombre}"></f:selectItems>
+                            </h:selectOneMenu>
+                            
+                            <h:outputLabel for="Transporte" value="Codigo de transporte:"/>
+                            <h:selectOneMenu id="idTransporte" 
+                                             value="#{serviciosBean.servicios.idTransporte}" 
+                                             title="idTransporte" required="true" 
+                                             class="form-control"
+                                             requiredMessage="Debes seleccionar un codigo de Transporte">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{tranportesBean.listaTransportes}"
+                                var="transporte" 
+                                itemValue="#{transporte}" 
+                                itemLabel="#{transporte.idTransporte}"></f:selectItems>
+                            </h:selectOneMenu>
+                            
+                            <h:outputLabel for="estadoServicio" value="estado Servicio:"/>
+                            <h:inputText id="estadoServicio" styleClass="form-control" value="#{serviciosBean.servicios.estadoServicio}" required="false">
+                          </h:inputText>
+                            
+                        </h:panelGrid>
+                        <h:commandButton  value="Guardar" styleClass="btn btn-success" action="#{serviciosBean.guardarServicio()}" style="margin-right:10px"/>
+                        <h:commandButton type="reset" value="Limpiar" styleClass="btn btn-danger"/>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+        <h:outputScript>
+            function confirmarEliminacion(){
+                return confirm("¿Está seguro que desea eliminar este Servicio?");
+            }
+            
+            <c:if test = "#{not empty flash.exito}" >
+                alertify.success('#{flash.exito}');
+            </c:if>
+        </h:outputScript>
+    </h:body>
+</html>
+
+
+
+
+
+
+

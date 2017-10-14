@@ -7,14 +7,12 @@ package entidades;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -39,20 +37,27 @@ public class CabanasEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @Column(name = "idCabanas")
     private String idCabanas;
     @Basic(optional = false)
+    @Column(name = "codCabana")
     private String codCabana;
     @Basic(optional = false)
+    @Column(name = "nombre")
     private String nombre;
+    @Column(name = "numLocal")
     private Long numLocal;
+    @Column(name = "capacidad")
     private Integer capacidad;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "precioDia")
     private BigDecimal precioDia;
+    @Column(name = "precioNoche")
     private BigDecimal precioNoche;
+    @Column(name = "precioDN")
     private BigDecimal precioDN;
+    @Column(name = "descripcion")
     private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCabanas")
-    private List<ServiciosEntity> serviciosEntityList;
 
     public CabanasEntity() {
     }
@@ -137,14 +142,6 @@ public class CabanasEntity implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public List<ServiciosEntity> getServiciosEntityList() {
-        return serviciosEntityList;
-    }
-
-    public void setServiciosEntityList(List<ServiciosEntity> serviciosEntityList) {
-        this.serviciosEntityList = serviciosEntityList;
     }
 
     @Override

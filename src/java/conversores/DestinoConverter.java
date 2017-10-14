@@ -23,7 +23,9 @@ public class DestinoConverter implements Converter {
         }
 
         try {
-            TipodestinoEntity destino= cl.obtenerDestino(value);
+            int id;
+            id = Integer.parseInt(value);
+            TipodestinoEntity destino= cl.obtenerDestino(id);
             return destino;
         } catch (Exception e) {
             return null;

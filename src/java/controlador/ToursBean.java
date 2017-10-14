@@ -48,7 +48,7 @@ public class ToursBean {
     }
     
     public List<TourEntity> getListaTour() {
-        return listaTour;
+        return modelo.listarTours();
     }
     
     public List<SelectItem> getListaTipoDestino() {
