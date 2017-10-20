@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
@@ -39,9 +34,8 @@ public class EstadoOfertaModel {
       public EstadoofertareservacionEntity obtenerEstadOferta(int idEstado) {
         EntityManager em = JpaUtil.getEntityManager();
         try {
-//Recupero el objeto desde la BD a través del método find
-           EstadoofertareservacionEntity idEs = em.find(EstadoofertareservacionEntity.class,
-                    idEstado);
+            //Recupero el objeto desde la BD a través del método find
+           EstadoofertareservacionEntity idEs = em.find(EstadoofertareservacionEntity.class, idEstado);
             em.close();
             return idEs;
         } catch (Exception e) {
@@ -92,16 +86,16 @@ public class EstadoOfertaModel {
         EntityManager em = JpaUtil.getEntityManager();
         int filasBorradas = 0;
         try {
-//Recuperando el objeto a eliminar
+            //Recuperando el objeto a eliminar
             EstadoofertareservacionEntity est = em.find(EstadoofertareservacionEntity.class, estado);
             if (est != null) {
                 EntityTransaction tran = em.getTransaction();
+                //Iniciando transacción
                 tran.begin();
-//Iniciando transacción
+                //Borrando la instancia
                 em.remove(est);
-//Borrando la instancia
+                //Confirmando la transacción
                 tran.commit();
-//Confirmando la transacción
                 filasBorradas = 1;
             }
             em.close();

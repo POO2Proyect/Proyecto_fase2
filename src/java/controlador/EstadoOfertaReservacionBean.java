@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import javax.faces.bean.ManagedBean;
@@ -70,9 +65,18 @@ public class EstadoOfertaReservacionBean {
         }
         return "EstadoOferta?faces-redirect=true";
     }
+       
+       public String modificarEstado(){
+           if(modelo.modificarEstadoOferta(estado)>0){
+               JsfUtil.setFlashMessage("Exito", "El registro fue mmodificado exitosamente");
+           }else{
+               JsfUtil.setErrorMessage(null, "ERROR. No se pudo modificar el registro");
+           }
+           return "EstadoOferta?faces-required=true";
+       }
     
         public void obtenerEstadOferta() {
-        String idOferta = JsfUtil.getRequest().getParameter("idOferta");
+        String idOferta = JsfUtil.getRequest().getParameter("idEstado");
         Integer id = Integer.parseInt(idOferta);
         estado= modelo.obtenerEstadOferta(id);
     }

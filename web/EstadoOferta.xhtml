@@ -21,15 +21,15 @@
                             <h:messages  />
                         </h:panelGroup>
                         <h:panelGrid columns="4" styleClass="table">
-                            <h:outputLabel for="IdEstado" value="id Estado:"/>
+                            <h:outputLabel for="idEstado" value="Estado:"/>
                             <h:inputText id="idEstado" styleClass="form-control" value="#{estadoOfertaReservacionBean.estado.idEstadoOfertaReservacion}" required="true" requiredMessage="Debes ingresar el idEstado" validatorMessage="Id no valido">
                             </h:inputText>
                             
-                            <h:outputLabel for="estado" value="estado:"/>
+                            <h:outputLabel for="estado" value="Nombre del Estado:"/>
                             <h:inputText id="estado" value="#{estadoOfertaReservacionBean.estado.estado}" required="true" styleClass="form-control" requiredMessage="Debes ingresar algun Estado">
                             </h:inputText>
                         </h:panelGrid>
-                        <h:commandButton  value="Guardar" styleClass="btn btn-success" action="#{estadoOfertaReservacionBean.guardarEstado()}" style="margin-right:10px"/>
+                        <h:commandButton  value="Guardar" styleClass="btn btn-success" action="#{estadoOfertaReservacionBean.guardarEstado()}" style="margin-right:5px"/>
                         <h:commandButton type="reset" value="Limpiar" styleClass="btn btn-danger"/>
                     </h:form>
                 </div>
@@ -49,6 +49,14 @@
                                 <h:outputLabel value="Estado de oferta"/>
                             </f:facet>
                             <h:outputText value="#{est.estado}"/>      
+                        </h:column>
+                        <h:column>
+                            <h:commandButton value="Modificar" styleClass="btn btn-success" action="#{estadoOfertaReservacionBean.obtenerEstadOferta()}">
+                                <f:param name="idEstado" value="#{est.idEstadoOfertaReservacion}" />
+                            </h:commandButton>
+                            <h:commandButton value="Eliminar" styleClass="btn btn-danger" action="#{estadoOfertaReservacionBean.eliminarEstado()}" onclick="return confirmarEliminacion()">
+                                <f:param name="idEstado" value="#{est.idEstadoOfertaReservacion}" />
+                            </h:commandButton>
                         </h:column>
                     </h:dataTable>
                 </h:form>
