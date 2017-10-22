@@ -95,9 +95,10 @@ public class TipoDestinoModel {
                 em.remove(destino);
                 tran.commit();
                 filasEliminadas =1;
-                em.close();
-                return filasEliminadas;
+               
             }
+             em.close();
+                return filasEliminadas;
         }catch(Exception e){
             System.out.println(e);
             

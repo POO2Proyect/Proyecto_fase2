@@ -46,15 +46,10 @@
                 <h:form >
                     <h:dataTable styleClass="table" value="#{tipoDestinoBeans.listarTipoDestino}" 
                                  var="est" rendered="#{tipoDestinoBeans.listarTipoDestino.size()>0}">
+                        
                         <h:column>
                             <f:facet name="header">
-                                <h:outputLabel value="idDestinos"/>
-                            </f:facet>
-                            <h:outputText value="#{est.idTipoDestino}" />
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputLabel value="codigo destino"/>
+                                <h:outputLabel value="codigo Destino"/>
                             </f:facet>
                             <h:outputText value="#{est.nombre}"/>      
                         </h:column>

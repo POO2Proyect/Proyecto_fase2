@@ -77,6 +77,7 @@ public class EstadoOfertaReservacionBean {
     
         public void obtenerEstadOferta() {
         String idOferta = JsfUtil.getRequest().getParameter("idEstado");
+        System.out.print(idOferta);
         Integer id = Integer.parseInt(idOferta);
         estado= modelo.obtenerEstadOferta(id);
     }
